@@ -24,7 +24,6 @@
         }, 
         {
          "draworder":"topdown",
-         "height":32,
          "name":"Enemies",
          "objects":[
                 {
@@ -234,13 +233,11 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":32,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
-         "height":32,
          "name":"Items",
          "objects":[
                 {
@@ -342,7 +339,6 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":32,
          "x":0,
          "y":0
         }, 
@@ -365,7 +361,7 @@
         {
          "columns":8,
          "firstgid":1,
-         "image":"..\/spritesheets\/tiles.png",
+         "image":"..\/spritesheets\/tiles32px.png",
          "imageheight":160,
          "imagewidth":256,
          "margin":0,
@@ -402,6 +398,7 @@
          "tilewidth":32
         }],
  "tilewidth":32,
- "version":1,
+ "type":"map",
+ "version":"2017.05.16",
  "width":32
 }

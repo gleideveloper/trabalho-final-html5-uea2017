@@ -8,10 +8,10 @@ GameState.prototype.preload = function () {
     this.game.load.tilemap('level1', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
 
     //Carrega o tiles do spritesheets
-    this.game.load.image('mapTiles', 'assets/spritesheets/tiles.png');
+    this.game.load.image('mapTiles', 'assets/spritesheets/tiles32px.png');
 
     // Carrega um spritesheet, os sprites são de 32x32(wxh) pixels, e há 8 sprites no arquivo
-    this.game.load.spritesheet('player', 'assets/spritesheets/player.png', 32, 32, 8);
+    this.game.load.spritesheet('player', 'assets/spritesheets/player64px.png', 64, 64, 8);
     this.game.load.spritesheet('items', 'assets/spritesheets/items.png', 32, 32, 16);
     this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 32, 32, 12);
 
