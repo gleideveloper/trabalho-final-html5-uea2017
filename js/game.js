@@ -3,29 +3,6 @@
 var GameState = function (game) {
 }
 
-GameState.prototype.preload = function () {
-    //Carrega o arquivo Tiled no formato JSON
-    this.game.load.tilemap('level1', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
-
-    //Carrega o tiles do spritesheets
-    this.game.load.image('mapTiles', 'assets/spritesheets/tiles32px.png');
-
-    // Carrega um spritesheet, os sprites são de 32x32(wxh) pixels, e há 8 sprites no arquivo
-    this.game.load.spritesheet('player', 'assets/spritesheets/player64px.png', 64, 64, 8);
-    this.game.load.spritesheet('items', 'assets/spritesheets/items.png', 32, 32, 16);
-    this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 32, 32, 12);
-
-    //Carrega a particula do efeito do diamante
-    this.game.load.image('particle', 'assets/spritesheets/pixel.png');
-
-    // Carregas os sons
-    this.game.load.audio('jumpSound', 'assets/sounds/jump.wav');
-    this.game.load.audio('pickupSound', 'assets/sounds/pickup.wav');
-    this.game.load.audio('playerDeathSound', 'assets/sounds/hurt3.ogg');
-    this.game.load.audio('enemyDeathSound', 'assets/sounds/hit2.ogg');
-    this.game.load.audio('music', 'assets/sounds/mystery.wav');
-}
-
 GameState.prototype.create = function () {
     // Inicializando sistema de física
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
