@@ -41,7 +41,7 @@ GameState.prototype.setCollide = function () {
     this.game.physics.arcade.overlap(this.player, this.diamonds, this.itemCollect, null, this);
 
     // O jogador morre na colisão com a lava ou com os morcegos
-    this.game.physics.arcade.collide(this.player, this.deathLayer, this.lavaCollision, null, this);
+    this.game.physics.arcade.collide(this.player, this.deathLayer, this.deathCollision, null, this);
     this.game.physics.arcade.overlap(this.player, this.bats, this.enemieCollision, null, this);
 
     // Adicionando colisão entre os morcegos e as paredes
@@ -88,7 +88,7 @@ GameState.prototype.enemieCollision = function(player, bat){
 
 // Nesse caso, apenas desligamos a colisão com a lava para evitar chamar o evento
 // repetidas vezes, e vamos para a condição de derrota
-GameState.prototype.lavaCollision = function(){
+GameState.prototype.deathCollision = function(){
     this.level1.setCollision([5, 6, 13], false, this.deathLayer);
     this.music.stop();
     this.lose();
@@ -179,14 +179,18 @@ GameState.prototype.createMapLevel1 = function () {
     this.bgLayer = this.level1.createLayer('Bg_0');
     this.bgLayer = this.level1.createLayer('Bg_1');
     this.bgLayer = this.level1.createLayer('Bg_2');
-    this.trackLayer = this.level1.createLayer('Track');
     this.deathLayer = this.level1.createLayer('Death');
+    this.superJump = this.level1.createLayer('SuperJump');
+    this.trackLayer = this.level1.createLayer('Track');
 
     //Define quais tiles do layer walls NÃO terão colisões
     this.level1.setCollisionByExclusion([9, 10, 11, 12, 17, 18, 19, 20], true, this.trackLayer);
 
-    // Define quais tiles do layer de lava colidem, então é mais fácil
+    // Define quais tiles do layer de death colidem
     this.level1.setCollision([43, 44, 45], true, this.deathLayer);
+
+    // Define quais tiles do layer do SuperJump colidem
+    this.level1.setCollision([41,42], true, this.superJump);
 
     // Redimensionando o tamanho do "mundo" do jogo
     this.trackLayer.resizeWorld();
@@ -194,7 +198,7 @@ GameState.prototype.createMapLevel1 = function () {
 
 GameState.prototype.createPlayer = function () {
     // cria o jogador adicionando-o na posição (160, 64) usando posição 5 do vetor
-    this.player = this.game.add.sprite(160, 64, 'player', 5);
+    this.player = this.game.add.sprite(90, 160, 'player', 5);
     this.player.anchor.setTo(0.5, 0.5);
     this.game.physics.enable(this.player);
     this.player.body.gravity.y = 750;

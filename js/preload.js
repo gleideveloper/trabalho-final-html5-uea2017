@@ -5,8 +5,8 @@ var PreloadState = function (game) {
 
 PreloadState.prototype.preload = function () {
     //Carrega a barra de status
-    this.scoreText = this.game.add.text(430, 280, "Loading...!", {font: "20px Arial", fill: "#ffffff"});
-    this.loadingBar = this.add.sprite(480, 320, "loading");
+    this.scoreText = this.game.add.text(595, 280, "Loading...!", {font: "20px Arial", fill: "#ffffff"});
+    this.loadingBar = this.add.sprite(640, 320, "loading");
     this.loadingBar.anchor.setTo(0.5, 0.5);
     this.load.setPreloadSprite(this.loadingBar);
 
