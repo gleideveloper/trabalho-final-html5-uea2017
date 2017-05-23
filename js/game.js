@@ -252,7 +252,7 @@ GameState.prototype.playerMovements = function () {
     // Se o a barra de espaço ou a tecla cima estiverem pressionadas, e o jogador estiver com a parte de baixo tocando em alguma coisa
     if((this.jumpButton.isDown || this.keys.up.isDown) && (this.player.body.touching.down || this.player.body.onFloor())){
         // Adicione uma velocidade no eixo Y, fazendo o jogador pular
-        this.player.body.velocity.y = -400;
+        this.player.body.velocity.y = -500;
         // Tocando o som de pulo
         this.jumpSound.play();
     }
