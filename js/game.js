@@ -11,7 +11,7 @@ GameState.prototype.create = function () {
 
     this.createPlayer();
 
-    //this.createCoin();
+    this.createPowerUp();
 
     //this.createEnemy();
 
@@ -27,7 +27,7 @@ GameState.prototype.update = function () {
     this.setCollide();
 
     // Movimentação do player
-    this.playerMovements();
+    this.playerMovement();
     //Movimentação dos enemys
     //this.emenyMoviment();
 }
@@ -103,7 +103,7 @@ GameState.prototype.lose = function(){
     this.game.state.start('lose');
 }
 
-GameState.prototype.createCoin = function () {
+GameState.prototype.createPowerUp = function () {
 // Grupo de diamantes
     this.diamonds = this.game.add.physicsGroup();
     this.level1.createFromObjects('Items', 'diamond', 'items', 5, true, false, this.diamonds);
@@ -218,7 +218,7 @@ GameState.prototype.emenyMoviment = function() {
     });
 }
 
-GameState.prototype.playerMovements = function () {
+GameState.prototype.playerMovement = function () {
     // Caso seja a tecla para a esquerda, ajustar uma velocidade negativa
     // ao eixo X, que fará a posição X diminuir e consequentemente o jogador
     // ir para a esquerda;
