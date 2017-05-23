@@ -205,7 +205,7 @@ GameState.prototype.createPlayer = function () {
 }
 
 GameState.prototype.emenyMoviment = function() {
-// Para cada morcego, verificar em que sentido ele está indo
+    // Para cada morcego, verificar em que sentido ele está indo
     // Se a velocidade for positiva, a escala no eixo X será 1, caso
     // contrário -1
     this.bats.forEach(function (bat) {

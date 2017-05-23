@@ -1,12 +1,13 @@
 "use strict"; //sempre começar o arquivo com essa linha
 
-var PreloadState = function(game) {};
+var PreloadState = function (game) {
+};
 
-PreloadState.prototype.preload = function() {
+PreloadState.prototype.preload = function () {
     //Carrega a barra de status
     this.scoreText = this.game.add.text(430, 280, "Loading...!", {font: "20px Arial", fill: "#ffffff"});
-    this.loadingBar = this.add.sprite(480,320,"loading");
-    this.loadingBar.anchor.setTo(0.5,0.5);
+    this.loadingBar = this.add.sprite(480, 320, "loading");
+    this.loadingBar.anchor.setTo(0.5, 0.5);
     this.load.setPreloadSprite(this.loadingBar);
 
     //Carrega o arquivo Tiled no formato JSON
@@ -31,12 +32,12 @@ PreloadState.prototype.preload = function() {
     this.game.load.audio('music', 'assets/sounds/mystery.wav');
 }
 
-PreloadState.prototype.create = function() {
+PreloadState.prototype.create = function () {
     //Cria o delay na transição de tela
     game.time.events.add(2000, startGame, this);
 }
 
-PreloadState.prototype.startGame = function() {
+function startGame() {
     //game.add.tween(this.loadingBar).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
     this.game.state.start("game");
 }
