@@ -36,7 +36,7 @@ PreloadState.prototype.create = function() {
     game.time.events.add(2000, startGame, this);
 }
 
-function startGame() {
+PreloadState.prototype.startGame = function() {
     //game.add.tween(this.loadingBar).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
     this.game.state.start("game");
 }

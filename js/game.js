@@ -28,6 +28,8 @@ GameState.prototype.update = function () {
 
     // Movimentação do player
     this.playerMovements();
+    //Movimentação dos enemys
+    this.emenyMoviment();
 }
 
 GameState.prototype.setCollide = function () {
@@ -202,6 +204,18 @@ GameState.prototype.createPlayer = function () {
     this.player.animations.add('jump', [4], 6);
 }
 
+GameState.prototype.emenyMoviment = function() {
+// Para cada morcego, verificar em que sentido ele está indo
+    // Se a velocidade for positiva, a escala no eixo X será 1, caso
+    // contrário -1
+    this.bats.forEach(function (bat) {
+        if (bat.body.velocity.x != 0) {
+            // Math.sign apenas retorna o sinal do parâmetro: positivo retorna 1, negativo -1
+            bat.scale.x = 1 * Math.sign(bat.body.velocity.x);
+        }
+    });
+}
+
 GameState.prototype.playerMovements = function () {
     // Caso seja a tecla para a esquerda, ajustar uma velocidade negativa
     // ao eixo X, que fará a posição X diminuir e consequentemente o jogador
@@ -245,16 +259,6 @@ GameState.prototype.playerMovements = function () {
     if(!this.player.body.touching.down && !this.player.body.onFloor()){
         this.player.animations.play('jump');
     }
-
-    // Para cada morcego, verificar em que sentido ele está indo
-    // Se a velocidade for positiva, a escala no eixo X será 1, caso
-    // contrário -1
-    this.bats.forEach(function(bat){
-        if(bat.body.velocity.x != 0) {
-            // Math.sign apenas retorna o sinal do parâmetro: positivo retorna 1, negativo -1
-            bat.scale.x = 1 * Math.sign(bat.body.velocity.x);
-        }
-    });
 }
 
 
