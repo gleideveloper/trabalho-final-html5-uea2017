@@ -11,10 +11,10 @@ PreloadState.prototype.preload = function () {
     this.load.setPreloadSprite(this.loadingBar);
 
     //Carrega o arquivo Tiled no formato JSON
-    this.game.load.tilemap('level1', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('level1', 'assets/maps/fase1.json', null, Phaser.Tilemap.TILED_JSON);
 
     //Carrega o tiles do spritesheets
-    this.game.load.image('mapTiles', 'assets/spritesheets/tiles32px.png');
+    this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
 
     // Carrega um spritesheet, os sprites são de 32x32(wxh) pixels, e há 8 sprites no arquivo
     this.game.load.spritesheet('player', 'assets/spritesheets/player64px.png', 64, 64, 8);

@@ -11,15 +11,15 @@ GameState.prototype.create = function () {
 
     this.createPlayer();
 
-    this.createCoin();
+    //this.createCoin();
 
-    this.createEnemy();
+    //this.createEnemy();
 
     this.createControlKey();
 
     this.createSound();
 
-    this.createScore();
+    //this.createScore();
 }
 
 GameState.prototype.update = function () {
@@ -29,23 +29,23 @@ GameState.prototype.update = function () {
     // Movimentação do player
     this.playerMovements();
     //Movimentação dos enemys
-    this.emenyMoviment();
+    //this.emenyMoviment();
 }
 
 GameState.prototype.setCollide = function () {
     // Detecção de colisões do player com as paredes da fase, que é um layer
-    this.game.physics.arcade.collide(this.player, this.wallsLayer);
+    this.game.physics.arcade.collide(this.player, this.trackLayer);
 
     // Cada colisão entre dois objetos terá um callback, que é o terceiro parâmetro
     // Colisão com os diamantes - devem ser coletados
     this.game.physics.arcade.overlap(this.player, this.diamonds, this.itemCollect, null, this);
 
     // O jogador morre na colisão com a lava ou com os morcegos
-    this.game.physics.arcade.collide(this.player, this.lavaLayer, this.lavaCollision, null, this);
+    this.game.physics.arcade.collide(this.player, this.deathLayer, this.lavaCollision, null, this);
     this.game.physics.arcade.overlap(this.player, this.bats, this.enemieCollision, null, this);
 
     // Adicionando colisão entre os morcegos e as paredes
-    this.game.physics.arcade.collide(this.bats, this.wallsLayer);
+    this.game.physics.arcade.collide(this.bats, this.trackLayer);
 }
 
 GameState.prototype.itemCollect = function(player, diamond){
@@ -89,7 +89,7 @@ GameState.prototype.enemieCollision = function(player, bat){
 // Nesse caso, apenas desligamos a colisão com a lava para evitar chamar o evento
 // repetidas vezes, e vamos para a condição de derrota
 GameState.prototype.lavaCollision = function(){
-    this.level1.setCollision([5, 6, 13], false, this.lavaLayer);
+    this.level1.setCollision([5, 6, 13], false, this.deathLayer);
     this.music.stop();
     this.lose();
 }
@@ -173,21 +173,23 @@ GameState.prototype.createControlKey = function () {
 GameState.prototype.createMapLevel1 = function () {
     //Cria o mapa e os layers do Tiled no Phaser
     this.level1 = this.game.add.tilemap('level1');
-    this.level1.addTilesetImage('tiles', 'mapTiles');
+    this.level1.addTilesetImage('tiles64px', 'mapTiles');
 
     //Cria os layers
-    this.bgLayer = this.level1.createLayer('Bg');
-    this.wallsLayer = this.level1.createLayer('Walls');
-    this.lavaLayer = this.level1.createLayer('Lava');
+    this.bgLayer = this.level1.createLayer('Bg_0');
+    this.bgLayer = this.level1.createLayer('Bg_1');
+    this.bgLayer = this.level1.createLayer('Bg_2');
+    this.trackLayer = this.level1.createLayer('Track');
+    this.deathLayer = this.level1.createLayer('Death');
 
     //Define quais tiles do layer walls NÃO terão colisões
-    this.level1.setCollisionByExclusion([9, 10, 11, 12, 17, 18, 19, 20], true, this.wallsLayer);
+    this.level1.setCollisionByExclusion([9, 10, 11, 12, 17, 18, 19, 20], true, this.trackLayer);
 
     // Define quais tiles do layer de lava colidem, então é mais fácil
-    this.level1.setCollision([5, 6, 13], true, this.lavaLayer);
+    this.level1.setCollision([43, 44, 45], true, this.deathLayer);
 
     // Redimensionando o tamanho do "mundo" do jogo
-    this.wallsLayer.resizeWorld();
+    this.trackLayer.resizeWorld();
 }
 
 GameState.prototype.createPlayer = function () {
