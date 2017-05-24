@@ -11,15 +11,15 @@ GameState.prototype.create = function () {
 
     this.createPlayer();
 
-    this.createCoin();
+    this.createPowerUp();
 
-    this.createEnemy();
+    //this.createEnemy();
 
     this.createControlKey();
 
     this.createSound();
 
-    this.createScore();
+    //this.createScore();
 }
 
 GameState.prototype.update = function () {
@@ -27,25 +27,25 @@ GameState.prototype.update = function () {
     this.setCollide();
 
     // Movimentação do player
-    this.playerMovements();
+    this.playerMovement();
     //Movimentação dos enemys
-    this.emenyMoviment();
+    //this.emenyMoviment();
 }
 
 GameState.prototype.setCollide = function () {
     // Detecção de colisões do player com as paredes da fase, que é um layer
-    this.game.physics.arcade.collide(this.player, this.wallsLayer);
+    this.game.physics.arcade.collide(this.player, this.trackLayer);
 
     // Cada colisão entre dois objetos terá um callback, que é o terceiro parâmetro
     // Colisão com os diamantes - devem ser coletados
     this.game.physics.arcade.overlap(this.player, this.diamonds, this.itemCollect, null, this);
 
     // O jogador morre na colisão com a lava ou com os morcegos
-    this.game.physics.arcade.collide(this.player, this.lavaLayer, this.lavaCollision, null, this);
+    this.game.physics.arcade.collide(this.player, this.deathLayer, this.deathCollision, null, this);
     this.game.physics.arcade.overlap(this.player, this.bats, this.enemieCollision, null, this);
 
     // Adicionando colisão entre os morcegos e as paredes
-    this.game.physics.arcade.collide(this.bats, this.wallsLayer);
+    this.game.physics.arcade.collide(this.bats, this.trackLayer);
 }
 
 GameState.prototype.itemCollect = function(player, diamond){
@@ -88,8 +88,8 @@ GameState.prototype.enemieCollision = function(player, bat){
 
 // Nesse caso, apenas desligamos a colisão com a lava para evitar chamar o evento
 // repetidas vezes, e vamos para a condição de derrota
-GameState.prototype.lavaCollision = function(){
-    this.level1.setCollision([5, 6, 13], false, this.lavaLayer);
+GameState.prototype.deathCollision = function(){
+    this.level1.setCollision([5, 6, 13], false, this.deathLayer);
     this.music.stop();
     this.lose();
 }
@@ -103,7 +103,7 @@ GameState.prototype.lose = function(){
     this.game.state.start('lose');
 }
 
-GameState.prototype.createCoin = function () {
+GameState.prototype.createPowerUp = function () {
 // Grupo de diamantes
     this.diamonds = this.game.add.physicsGroup();
     this.level1.createFromObjects('Items', 'diamond', 'items', 5, true, false, this.diamonds);
@@ -173,26 +173,30 @@ GameState.prototype.createControlKey = function () {
 GameState.prototype.createMapLevel1 = function () {
     //Cria o mapa e os layers do Tiled no Phaser
     this.level1 = this.game.add.tilemap('level1');
-    this.level1.addTilesetImage('tiles', 'mapTiles');
+    this.level1.addTilesetImage('tiles64px', 'mapTiles');
 
     //Cria os layers
     this.bgLayer = this.level1.createLayer('Bg');
-    this.wallsLayer = this.level1.createLayer('Walls');
-    this.lavaLayer = this.level1.createLayer('Lava');
+    this.deathLayer = this.level1.createLayer('Death');
+    this.superJump = this.level1.createLayer('SuperJump');
+    this.trackLayer = this.level1.createLayer('Track');
 
     //Define quais tiles do layer walls NÃO terão colisões
-    this.level1.setCollisionByExclusion([9, 10, 11, 12, 17, 18, 19, 20], true, this.wallsLayer);
+    this.level1.setCollisionByExclusion([9, 10, 11, 12, 17, 18, 19, 20], true, this.trackLayer);
 
-    // Define quais tiles do layer de lava colidem, então é mais fácil
-    this.level1.setCollision([5, 6, 13], true, this.lavaLayer);
+    // Define quais tiles do layer de death colidem
+    this.level1.setCollision([43, 44, 45], true, this.deathLayer);
+
+    // Define quais tiles do layer do SuperJump colidem
+    this.level1.setCollision([41,42], true, this.superJump);
 
     // Redimensionando o tamanho do "mundo" do jogo
-    this.wallsLayer.resizeWorld();
+    this.trackLayer.resizeWorld();
 }
 
 GameState.prototype.createPlayer = function () {
     // cria o jogador adicionando-o na posição (160, 64) usando posição 5 do vetor
-    this.player = this.game.add.sprite(160, 64, 'player', 5);
+    this.player = this.game.add.sprite(90, 160, 'player', 5);
     this.player.anchor.setTo(0.5, 0.5);
     this.game.physics.enable(this.player);
     this.player.body.gravity.y = 750;
@@ -216,7 +220,7 @@ GameState.prototype.emenyMoviment = function() {
     });
 }
 
-GameState.prototype.playerMovements = function () {
+GameState.prototype.playerMovement = function () {
     // Caso seja a tecla para a esquerda, ajustar uma velocidade negativa
     // ao eixo X, que fará a posição X diminuir e consequentemente o jogador
     // ir para a esquerda;
@@ -250,7 +254,7 @@ GameState.prototype.playerMovements = function () {
     // Se o a barra de espaço ou a tecla cima estiverem pressionadas, e o jogador estiver com a parte de baixo tocando em alguma coisa
     if((this.jumpButton.isDown || this.keys.up.isDown) && (this.player.body.touching.down || this.player.body.onFloor())){
         // Adicione uma velocidade no eixo Y, fazendo o jogador pular
-        this.player.body.velocity.y = -400;
+        this.player.body.velocity.y = -500;
         // Tocando o som de pulo
         this.jumpSound.play();
     }

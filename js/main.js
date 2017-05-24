@@ -2,9 +2,10 @@
 var Globals = { 
     score: 0 
 };
-// Tamanho em Tiles 32 (20 x 15) => Resolução de tela(640, 480)
-// Tamanho em Tiles 64 (15 x 10) => Resolução de tela(960, 640)
-var game = new Phaser.Game(960, 640, Phaser.CANVAS, 'phaser-canvas');
+// Mapa do jogo em Tiles 64 (60 x 20) => Tamanho de tela(3840, 1280)
+// Tela do Jogo em Tiles 64 (20 x 10) => Tamanho de tela(1280, 640)
+
+var game = new Phaser.Game(1280, 640, Phaser.CANVAS, 'phaser-canvas');
 game.state.add('boot', BootState);
 game.state.add('preload', PreloadState);
 game.state.add('game', GameState);

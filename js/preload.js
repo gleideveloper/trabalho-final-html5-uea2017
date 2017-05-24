@@ -5,16 +5,16 @@ var PreloadState = function (game) {
 
 PreloadState.prototype.preload = function () {
     //Carrega a barra de status
-    this.scoreText = this.game.add.text(430, 280, "Loading...!", {font: "20px Arial", fill: "#ffffff"});
-    this.loadingBar = this.add.sprite(480, 320, "loading");
+    this.scoreText = this.game.add.text(595, 280, "Loading...!", {font: "20px Arial", fill: "#ffffff"});
+    this.loadingBar = this.add.sprite(640, 320, "loading");
     this.loadingBar.anchor.setTo(0.5, 0.5);
     this.load.setPreloadSprite(this.loadingBar);
 
     //Carrega o arquivo Tiled no formato JSON
-    this.game.load.tilemap('level1', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('level1', 'assets/maps/fase1.json', null, Phaser.Tilemap.TILED_JSON);
 
     //Carrega o tiles do spritesheets
-    this.game.load.image('mapTiles', 'assets/spritesheets/tiles32px.png');
+    this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
 
     // Carrega um spritesheet, os sprites são de 32x32(wxh) pixels, e há 8 sprites no arquivo
     this.game.load.spritesheet('player', 'assets/spritesheets/player64px.png', 64, 64, 8);
