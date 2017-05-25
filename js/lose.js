@@ -15,11 +15,16 @@ LoseState.prototype.preload = function() {
     // Não há nenhum asset a ser carregado aqui, então a função fica vazia
 }
 
+LoseState.prototype.init = function(score){
+    this.game.add.text(200, 300, "Score: " + score, {font: "35px Arial", fill: "#ffffff"});
+    //alert("You scored: "+score)
+}
+
 // create: instanciar e inicializar todos os objetos dessa scene
 LoseState.prototype.create = function() {
     this.game.add.text(200, 200, "You Lose!", {font: "35px Arial", fill: "#ffffff"});
     //Adiciona o Score
-    this.game.add.text(200, 300, "Score: " + Globals.score, {font: "35px Arial", fill: "#ffffff"});
+    //this.game.add.text(200, 300, "Score: " + Globals.score, {font: "35px Arial", fill: "#ffffff"});
     // Capturando tecla enter para uso posterior
     this.returnKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 }

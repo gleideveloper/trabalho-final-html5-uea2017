@@ -11,7 +11,7 @@ PreloadState.prototype.preload = function () {
     this.load.setPreloadSprite(this.loadingBar);
 
     //Carrega o arquivo Tiled no formato JSON
-    this.game.load.tilemap('level1', 'assets/maps/fase1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('level1', 'assets/maps/tiled_level1.json', null, Phaser.Tilemap.TILED_JSON);
 
     //Carrega o tiles do spritesheets
     this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
@@ -23,6 +23,11 @@ PreloadState.prototype.preload = function () {
 
     //Carrega a particula do efeito do diamante
     this.game.load.image('particle', 'assets/pixel.png');
+
+    //Button Controls
+    this.game.load.image("home","assets/home.png");
+    this.game.load.image("play","assets/play-button.png");
+    this.game.load.image("pause","assets/pause-button.png");
 
     // Carregas os sons
     this.game.load.audio('jumpSound', 'assets/sounds/jump.wav');
@@ -39,5 +44,5 @@ PreloadState.prototype.create = function () {
 
 function startGame() {
     //game.add.tween(this.loadingBar).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
-    this.game.state.start("game");
+    this.game.state.start("home");
 }

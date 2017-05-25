@@ -89,7 +89,7 @@ GameState.prototype.enemieCollision = function(player, bat){
 // Nesse caso, apenas desligamos a colisão com a lava para evitar chamar o evento
 // repetidas vezes, e vamos para a condição de derrota
 GameState.prototype.deathCollision = function(){
-    this.level1.setCollision([5, 6, 13], false, this.deathLayer);
+    this.level1.setCollision([43, 44, 45], false, this.deathLayer);
     this.music.stop();
     this.lose();
 }
