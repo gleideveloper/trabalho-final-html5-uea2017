@@ -25,8 +25,8 @@ GameState.prototype.create = function () {
 }
 
 GameState.prototype.update = function () {
-    //this.parallaxBg.tilePosition.x -= 0.3;
-    this.parallaxBg.x = game.camera.x * 0.5;
+    this.parallaxBg.tilePosition.x -= 0.3;
+    //this.parallaxBg.x = game.camera.x * 0.5;
 
     //Seta colisão dos objetos
     this.setCollide();
@@ -176,6 +176,9 @@ GameState.prototype.createControlKey = function () {
 }
 
 GameState.prototype.setParallaxBackground = function () {
+    /** Novo Exemplo para aplixar
+     * http://mightyfingers.com/tutorials/advanced/parallax-background/
+     */
     //Set the games background colour
     this.game.stage.backgroundColor = '#697e96';
     this.parallaxBg = this.game.add.tileSprite(0, 0,this.game.cache.getImage('dark-bg').width,
