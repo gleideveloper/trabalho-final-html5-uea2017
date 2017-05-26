@@ -7,6 +7,9 @@ var HomeState = function (game) {
 
 HomeState.prototype = {
     create: function(){
+        //Set the games background colour
+        this.game.stage.backgroundColor = '#697e96';
+
         var homeImage = this.game.add.sprite(640,220,"home");
         homeImage.anchor.setTo(0.5,0.5);
 

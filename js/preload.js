@@ -4,6 +4,9 @@ var PreloadState = function (game) {
 };
 
 PreloadState.prototype.preload = function () {
+    //Set the games background colour
+    this.game.stage.backgroundColor = '#697e96';
+
     //Carrega a barra de status
     this.loadingText = this.game.add.text(640, 300, "Loading...!", {font: "20px Arial", fill: "#ffffff"});
     this.loadingText.anchor.setTo(0.5,0.5);
@@ -16,6 +19,8 @@ PreloadState.prototype.preload = function () {
 
     //Carrega o tiles do spritesheets
     this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
+
+    this.game.load.image('dark-bg', 'assets/dark-bg.png');
 
     // Carrega um spritesheet, os sprites são de 32x32(wxh) pixels, e há 8 sprites no arquivo
     this.game.load.spritesheet('player', 'assets/spritesheets/player64px.png', 64, 64, 8);
