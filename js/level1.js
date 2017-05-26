@@ -19,7 +19,7 @@ GameState.prototype.create = function () {
 
     this.createSound();
 
-    //this.createScore();
+    this.createScore();
 }
 
 GameState.prototype.update = function () {
@@ -38,7 +38,7 @@ GameState.prototype.setCollide = function () {
 
     // Cada colisão entre dois objetos terá um callback, que é o terceiro parâmetro
     // Colisão com os diamantes - devem ser coletados
-    this.game.physics.arcade.overlap(this.player, this.diamonds, this.itemCollect, null, this);
+    this.game.physics.arcade.overlap(this.player, this.powerups, this.itemCollect, null, this);
 
     // O jogador morre na colisão com a lava ou com os morcegos
     this.game.physics.arcade.collide(this.player, this.deathLayer, this.deathCollision, null, this);
@@ -48,32 +48,33 @@ GameState.prototype.setCollide = function () {
     this.game.physics.arcade.collide(this.bats, this.trackLayer);
 }
 
-GameState.prototype.itemCollect = function(player, diamond){
+GameState.prototype.itemCollect = function (player, powerup) {
     // Atualizando estado do jogo e HUD
-    this.collectedDiamonds++;
+    this.collectedPowerUp++;
     this.score += 100;
     this.scoreText.text = "Score: " + this.score;
     // Condição de vitória: pegar todos os diamantes
-    if(this.collectedDiamonds == this.totalDiamonds){
-        Globals.score = this.score; // Guardando score na variável global para o próximo estado
+    if (this.collectedPowerUp == this.totalPowerUp) {
+        //Globals.score = this.score; // Guardando score na variável global para o próximo estado
         this.music.stop();
-        this.game.state.start('win');
+        this.game.state.start('win',true,false,this.score);
+
     }
     //Define o ponto de colisão
-    this.particleEmitter.x = diamond.x;
-    this.particleEmitter.y = diamond.y;
+    this.particleEmitter.x = powerup.x;
+    this.particleEmitter.y = powerup.y;
     //Emite o efeito de particula
     this.particleEmitter.start(true, 500, null, 10);
 
     this.pickupSound.play(); // som de pegar o diamante
-    diamond.kill(); // removendo o diamante do jogo
+    powerup.kill(); // removendo o diamante do jogo
 }
 
-GameState.prototype.enemieCollision = function(player, bat){
+GameState.prototype.enemieCollision = function (player, bat) {
     // Tratamento da colisão entre o jogador e os diamantes
     // Se o jogador colidir por baixo e o morcego por cima, isso indica que o jogador pulou
     // em cima do morcego, nesse caso vamos "matar" o morcego
-    if(player.body.touching.down && bat.body.touching.up){
+    if (player.body.touching.down && bat.body.touching.up) {
         // tocando som de morte do morcego
         this.enemyDeathSound.play();
         // adicionando um pequeno impulso vertical ao jogador
@@ -82,43 +83,43 @@ GameState.prototype.enemieCollision = function(player, bat){
         this.score += 200;
         this.scoreText.text = "Score: " + this.score;
         bat.kill();
-    }
-    else this.lose(); // caso contrário, ir para condição de derrota
+    } else this.lose(); // caso contrário, ir para condição de derrota
 }
 
 // Nesse caso, apenas desligamos a colisão com a lava para evitar chamar o evento
 // repetidas vezes, e vamos para a condição de derrota
-GameState.prototype.deathCollision = function(){
+GameState.prototype.deathCollision = function () {
     this.level1.setCollision([43, 44, 45], false, this.deathLayer);
     this.music.stop();
     this.lose();
 }
 
 // Condição de derrota: guarde o score e siga para o próximo estado
-GameState.prototype.lose = function(){
+GameState.prototype.lose = function () {
     console.debug("Morreu!");
-    Globals.score = this.score;
+    //Globals.score = this.score;
     this.playerDeathSound.play();
     this.music.stop();
-    this.game.state.start('lose');
+    this.game.state.start("lose",true,false,this.score);
+    //this.game.state.start('lose');
 }
 
 GameState.prototype.createPowerUp = function () {
 // Grupo de diamantes
-    this.diamonds = this.game.add.physicsGroup();
-    this.level1.createFromObjects('Items', 'diamond', 'items', 5, true, false, this.diamonds);
+    this.powerups = this.game.add.physicsGroup();
+    this.level1.createFromObjects('PowerUp', 'heart', 'items', 5, true, false, this.powerups);
     // Para cada objeto do grupo, vamos executar uma função
-    this.diamonds.forEach(function (diamond) {
+    this.powerups.forEach(function (powerup) {
         // body.immovable = true indica que o objeto não é afetado por forças externas
-        diamond.body.immovable = true;
+        powerup.body.immovable = true;
         // Adicionando animações; o parâmetro true indica que a animação é em loop
-        diamond.animations.add('spin', [4, 5, 6, 7, 6, 5], 6, true);
-        diamond.animations.play('spin');
+        powerup.animations.add('spin', [13, 14, 14, 13, 13], 6, true);
+        powerup.animations.play('spin');
     });
 
     //Emissor de particulas
-    this.particleEmitter = this.game.add.emitter(0,0,100);
-    this.particleEmitter.makeParticles ('particle');
+    this.particleEmitter = this.game.add.emitter(0, 0, 100);
+    this.particleEmitter.makeParticles('particle');
 }
 
 GameState.prototype.createEnemy = function () {
@@ -147,12 +148,12 @@ GameState.prototype.createScore = function () {
 
     // Estado do jogo - Variáveis para guardar quaisquer informações pertinentes para as condições de
     // vitória/derrota, ações do jogador, etc
-    this.totalDiamonds = this.diamonds.length;
-    this.collectedDiamonds = 0;
+    this.totalPowerUp = this.powerups.length;
+    this.collectedPowerUp = 0;
     this.score = 0;
 };
 
-GameState.prototype.createSound = function(){
+GameState.prototype.createSound = function () {
     // Criando assets de som
     this.jumpSound = this.game.add.audio('jumpSound');
     this.pickupSound = this.game.add.audio('pickupSound');
@@ -188,7 +189,7 @@ GameState.prototype.createMapLevel1 = function () {
     this.level1.setCollision([43, 44, 45], true, this.deathLayer);
 
     // Define quais tiles do layer do SuperJump colidem
-    this.level1.setCollision([41,42], true, this.superJump);
+    this.level1.setCollision([41, 42], true, this.superJump);
 
     // Redimensionando o tamanho do "mundo" do jogo
     this.trackLayer.resizeWorld();
@@ -208,7 +209,7 @@ GameState.prototype.createPlayer = function () {
     this.player.animations.add('jump', [4], 6);
 }
 
-GameState.prototype.emenyMoviment = function() {
+GameState.prototype.emenyMoviment = function () {
     // Para cada morcego, verificar em que sentido ele está indo
     // Se a velocidade for positiva, a escala no eixo X será 1, caso
     // contrário -1
@@ -252,7 +253,7 @@ GameState.prototype.playerMovement = function () {
     }
 
     // Se o a barra de espaço ou a tecla cima estiverem pressionadas, e o jogador estiver com a parte de baixo tocando em alguma coisa
-    if((this.jumpButton.isDown || this.keys.up.isDown) && (this.player.body.touching.down || this.player.body.onFloor())){
+    if ((this.jumpButton.isDown || this.keys.up.isDown) && (this.player.body.touching.down || this.player.body.onFloor())) {
         // Adicione uma velocidade no eixo Y, fazendo o jogador pular
         this.player.body.velocity.y = -500;
         // Tocando o som de pulo
@@ -260,7 +261,7 @@ GameState.prototype.playerMovement = function () {
     }
 
     // Se o jogador não estiver no chão, inicie a animação 'jump'
-    if(!this.player.body.touching.down && !this.player.body.onFloor()){
+    if (!this.player.body.touching.down && !this.player.body.onFloor()) {
         this.player.animations.play('jump');
     }
 }
