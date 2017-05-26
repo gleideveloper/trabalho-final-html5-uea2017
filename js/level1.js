@@ -190,7 +190,7 @@ GameState.prototype.createMapLevel1 = function () {
     this.level1.addTilesetImage('tiles64px', 'mapTiles');
 
     //Cria os layers
-    //this.bgLayer = this.level1.createLayer('Bg');
+    this.level1.createLayer('Bg');
     this.deathLayer = this.level1.createLayer('Death');
     this.superJump = this.level1.createLayer('SuperJump');
     this.trackLayer = this.level1.createLayer('Track');
