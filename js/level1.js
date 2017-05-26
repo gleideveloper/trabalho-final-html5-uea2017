@@ -7,6 +7,9 @@ GameState.prototype.create = function () {
     // Inicializando sistema de física
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+    //Set the games background colour
+    this.game.stage.backgroundColor = '#697e96';
+
     this.createMapLevel1();
 
     this.createPlayer();
@@ -107,13 +110,13 @@ GameState.prototype.lose = function () {
 GameState.prototype.createPowerUp = function () {
 // Grupo de diamantes
     this.powerups = this.game.add.physicsGroup();
-    this.level1.createFromObjects('PowerUp', 'heart', 'items', 5, true, false, this.powerups);
+    this.level1.createFromObjects('PowerUp', 'power', 'items', 5, true, false, this.powerups);
     // Para cada objeto do grupo, vamos executar uma função
     this.powerups.forEach(function (powerup) {
         // body.immovable = true indica que o objeto não é afetado por forças externas
         powerup.body.immovable = true;
         // Adicionando animações; o parâmetro true indica que a animação é em loop
-        powerup.animations.add('spin', [13, 14, 14, 13, 13], 6, true);
+        powerup.animations.add('spin', [4, 1, 1, 4, 1,], 6, true);
         powerup.animations.play('spin');
     });
 
@@ -177,7 +180,7 @@ GameState.prototype.createMapLevel1 = function () {
     this.level1.addTilesetImage('tiles64px', 'mapTiles');
 
     //Cria os layers
-    this.bgLayer = this.level1.createLayer('Bg');
+    //this.bgLayer = this.level1.createLayer('Bg');
     this.deathLayer = this.level1.createLayer('Death');
     this.superJump = this.level1.createLayer('SuperJump');
     this.trackLayer = this.level1.createLayer('Track');

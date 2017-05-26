@@ -19,7 +19,7 @@ PreloadState.prototype.preload = function () {
 
     // Carrega um spritesheet, os sprites são de 32x32(wxh) pixels, e há 8 sprites no arquivo
     this.game.load.spritesheet('player', 'assets/spritesheets/player64px.png', 64, 64, 8);
-    this.game.load.spritesheet('items', 'assets/spritesheets/items.png', 32, 32, 16);
+    this.game.load.spritesheet('items', 'assets/spritesheets/powerup.png', 64, 64, 16);
     //this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 32, 32, 12);
 
     //Carrega a particula do efeito do diamante
