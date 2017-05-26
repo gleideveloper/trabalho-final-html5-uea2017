@@ -25,8 +25,8 @@ GameState.prototype.create = function () {
 }
 
 GameState.prototype.update = function () {
-    this.parallaxBg.tilePosition.x -= 0.3;
-    //this.parallaxBg.x = game.camera.x * 0.5;
+    //this.parallaxBg.tilePosition.x -= 0.3;
+    this.parallaxBg.x = game.camera.x * 0.5;
 
     //Seta colisão dos objetos
     this.setCollide();
