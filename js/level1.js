@@ -8,7 +8,7 @@ GameState.prototype.create = function () {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //Set the games background colour
-    this.game.stage.backgroundColor = '#697e96';
+    //this.game.stage.backgroundColor = '#697e96';
 
     this.createMapLevel1();
 
