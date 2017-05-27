@@ -9,6 +9,8 @@ GameState.prototype.create = function () {
 
     //Set the games background colour
     //this.game.stage.backgroundColor = '#697e96';
+  
+    this.setParallaxBackground();
 
     this.createMapLevel1();
 
@@ -26,6 +28,9 @@ GameState.prototype.create = function () {
 }
 
 GameState.prototype.update = function () {
+    //this.parallaxBg.tilePosition.x -= 0.3;
+    this.parallaxBg.x = game.camera.x * 0.5;
+
     //Seta colisão dos objetos
     this.setCollide();
 
@@ -174,13 +179,24 @@ GameState.prototype.createControlKey = function () {
     this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 }
 
+GameState.prototype.setParallaxBackground = function () {
+    /** Novo Exemplo para aplicar
+     * http://mightyfingers.com/tutorials/advanced/parallax-background/
+     */
+    //Set the games background colour
+    this.game.stage.backgroundColor = '#697e96';
+    this.parallaxBg = this.game.add.tileSprite(0, 0,this.game.cache.getImage('dark-bg').width,
+        this.game.cache.getImage('dark-bg').height,'dark-bg');
+}
+
 GameState.prototype.createMapLevel1 = function () {
     //Cria o mapa e os layers do Tiled no Phaser
     this.level1 = this.game.add.tilemap('level1');
     this.level1.addTilesetImage('tiles64px', 'mapTiles');
 
     //Cria os layers
-    //this.bgLayer = this.level1.createLayer('Bg');
+
+    this.level1.createLayer('Bg')
     this.deathLayer = this.level1.createLayer('Death');
     this.superJump = this.level1.createLayer('SuperJump');
     this.trackLayer = this.level1.createLayer('Track');
