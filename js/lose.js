@@ -1,11 +1,5 @@
 "use strict"; //sempre começar o arquivo com essa linha
 
-//Atenção sempre: 
-// - Letras maiúsculas e minúsculas: sempre usar os "cases" corretos;
-// - Abrir e fechar parênteses: um esquecimento pode gerar um erro difícil de notar;
-// - Abrir e fechar chaves: mesmo caso anterior
-// - Sempre veja o console no navegador apertando F12 caso algo não funcione como deveria
-
 //Um estado é sempre um objeto JavaScript, com no mínimo as 3 funções principais: preload, create e update
 //As funções sempre começam com NomeDoObjeto.prototype 
 var LoseState = function(game) {};
@@ -32,6 +26,6 @@ LoseState.prototype.create = function() {
 // update: o que fazer a cada quadro por segundo
 LoseState.prototype.update = function() {
     if(this.returnKey.isDown){
-        this.game.state.start('game');
+        this.game.state.start('level1');
     }
 }
