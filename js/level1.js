@@ -104,11 +104,15 @@ GameState.prototype.deathCollision = function () {
 
 // Condição de derrota: guarde o score e siga para o próximo estado
 GameState.prototype.lose = function () {
-    console.debug("Morreu!");
+    //console.debug("Morreu!");
     //Globals.score = this.score;
     this.playerDeathSound.play();
     this.music.stop();
-    this.game.state.start("lose",true,false,this.score);
+    //desliguei a gravidade do player antes dele morer - Jean
+    this.player.body.gravity.y = 0;
+    //dei um delay antes da chamada da tela de "lose"
+    this.game.time.events.add(500, function(){this.game.state.start("lose",true,false,this.score);}, this)
+    //this.game.state.start("lose",true,false,this.score);
     //this.game.state.start('lose');
 }
 
