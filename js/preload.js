@@ -37,9 +37,9 @@ PreloadState.prototype.preload = function () {
 
     // Carregas os sons
     this.game.load.audio('jumpSound', 'assets/sounds/ourSounds/jump.wav');
-    this.game.load.audio('pickupSound', 'assets/sounds/pickup.wav');
+    this.game.load.audio('pickupSound', 'assets/sounds/ourSounds/powerUp.wav');
     this.game.load.audio('playerDeathSound', 'assets/sounds/ourSounds/death.wav');
-    this.game.load.audio('enemyDeathSound', 'assets/sounds/hit2.ogg');
+    this.game.load.audio('enemyDeathSound', 'assets/sounds/ourSounds/hit.ogg');
     this.game.load.audio('music', 'assets/sounds/ourSounds/BG.wav');
 }
 
