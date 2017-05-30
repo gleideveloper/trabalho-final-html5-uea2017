@@ -223,8 +223,8 @@ GameState.prototype.createPlayer = function () {
     this.player.body.collideWorldBounds = true;
     this.game.camera.follow(this.player);
     // Animações do jogador com os parâmetros: nome da animação, lista de quadros e número de FPS
-    this.player.animations.add('walk', [0, 1, 2, 1], 6);
-    this.player.animations.add('idle', [5, 5, 5, 5, 5, 5, 6, 5, 6, 5], 6);
+    this.player.animations.add('walk', [0, 1, 2, 3], 6);
+    this.player.animations.add('idle', [5, 5, 5, 6, 5, 6, 5], 6);
     this.player.animations.add('jump', [4], 6);
 }
 
