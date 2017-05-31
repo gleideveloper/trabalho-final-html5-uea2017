@@ -14,11 +14,11 @@ GameState.prototype.create = function () {
 
     this.createMapLevel1();
 
-    this.createPlayer();
+    this.createPlayer('playerSABD');
 
     this.createPowerUp();
 
-    //this.createEnemy();
+    this.createEnemy();
 
     this.createControlKey();
 
@@ -214,9 +214,9 @@ GameState.prototype.createMapLevel1 = function () {
     this.trackLayer.resizeWorld();
 }
 
-GameState.prototype.createPlayer = function () {
+GameState.prototype.createPlayer = function (player) {
     // cria o jogador adicionando-o na posição (160, 64) usando posição 5 do vetor
-    this.player = this.game.add.sprite(90, 160, 'player', 5);
+    this.player = this.game.add.sprite(90, 160, player, 5);
     this.player.anchor.setTo(0.5, 0.5);
     this.game.physics.enable(this.player);
     this.player.body.gravity.y = 750;
