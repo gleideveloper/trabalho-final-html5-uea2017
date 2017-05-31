@@ -55,10 +55,10 @@ GameState.prototype.setCollide = function () {
 
     // O jogador morre na colisão com a lava ou com os morcegos
     this.game.physics.arcade.collide(this.player, this.deathLayer, this.deathCollision, null, this);
-    this.game.physics.arcade.overlap(this.player, this.fires, this.enemieCollision, null, this);
+    this.game.physics.arcade.overlap(this.player, this.enemies, this.enemieCollision, null, this);
 
     // Adicionando colisão entre os morcegos e as paredes
-    this.game.physics.arcade.collide(this.fires, this.trackLayer);
+    this.game.physics.arcade.collide(this.enemies, this.trackLayer);
 }
 
 GameState.prototype.itemCollect = function (player, powerup) {
@@ -164,18 +164,18 @@ GameState.prototype.createPowerUp = function () {
 
 GameState.prototype.createEnemy = function () {
     // Grupo de morcegos:
-    this.fires = this.game.add.physicsGroup();
-    this.level1.createFromObjects('Enemies', 'fire', 'enemies', 8, true, false, this.fires);
-    this.fires.forEach(function (fire) {
-        fire.anchor.setTo(0.5, 0.5);
-        fire.body.immovable = true;
-        fire.animations.add('fly', [12, 13, 14, 15], 6, true);
-        fire.animations.play('fly');
+    this.enemies = this.game.add.physicsGroup();
+    this.level1.createFromObjects('Enemies', 'enemy', 'enemies', 8, true, false, this.enemies);
+    this.enemies.forEach(function (enemy) {
+        enemy.anchor.setTo(0.5, 0.5);
+        enemy.body.immovable = true;
+        enemy.animations.add('fly', [12, 13, 14, 15], 6, true);
+        enemy.animations.play('fly');
         // Velocidade inicial do inimigo
-        fire.body.velocity.x = 100;
+        enemy.body.velocity.x = 100;
         // bounce.x=1 indica que, se o objeto tocar num objeto no eixo x, a força deverá
         // ficar no sentido contrário; em outras palavras, o objeto é perfeitamente elástico
-        fire.body.bounce.x = 1;
+        enemy.body.bounce.x = 1;
     });
 }
 
@@ -265,10 +265,10 @@ GameState.prototype.emenyMoviment = function () {
     // Para cada morcego, verificar em que sentido ele está indo
     // Se a velocidade for positiva, a escala no eixo X será 1, caso
     // contrário -1
-    this.fires.forEach(function (fire) {
-        if (fire.body.velocity.x != 0) {
+    this.enemies.forEach(function (enemy) {
+        if (enemy.body.velocity.x != 0) {
             // Math.sign apenas retorna o sinal do parâmetro: positivo retorna 1, negativo -1
-            fire.scale.x = 1 * Math.sign(fire.body.velocity.x);
+            enemy.scale.x = 1 * Math.sign(enemy.body.velocity.x);
         }
     });
 }

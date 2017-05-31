@@ -48,31 +48,7 @@
          "draworder":"topdown",
          "height":0,
          "name":"SuperJump",
-         "objects":[
-                {
-                 "gid":43,
-                 "height":64,
-                 "id":40,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":444,
-                 "y":1026
-                }, 
-                {
-                 "gid":43,
-                 "height":64,
-                 "id":41,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":572,
-                 "y":1026
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -230,10 +206,10 @@
          "name":"Enemies",
          "objects":[
                 {
-                 "gid":176,
+                 "gid":174,
                  "height":64,
                  "id":44,
-                 "name":"fire",
+                 "name":"enemy",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -242,10 +218,10 @@
                  "y":776
                 }, 
                 {
-                 "gid":176,
+                 "gid":174,
                  "height":64,
                  "id":45,
-                 "name":"fire",
+                 "name":"enemy",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -292,21 +268,8 @@
          "tilewidth":64
         }, 
         {
-         "columns":2,
-         "firstgid":161,
-         "image":"..\/..\/..\/..\/Users\/gleid\/Pictures\/SuperJump.png",
-         "imageheight":64,
-         "imagewidth":128,
-         "margin":0,
-         "name":"SuperJump",
-         "spacing":0,
-         "tilecount":2,
-         "tileheight":64,
-         "tilewidth":64
-        }, 
-        {
          "columns":4,
-         "firstgid":163,
+         "firstgid":161,
          "image":"..\/spritesheets\/enemies.png",
          "imageheight":256,
          "imagewidth":256,
