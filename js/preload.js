@@ -16,6 +16,7 @@ PreloadState.prototype.preload = function () {
 
     //Carrega o arquivo Tiled no formato JSON
     this.game.load.tilemap('level1', 'assets/maps/tiled_level1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('levelpalafitas', 'assets/maps/tiled_level_palafitas.json', null, Phaser.Tilemap.TILED_JSON);
 
     //Carrega o tiles do spritesheets
     this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
