@@ -50,5 +50,6 @@ PreloadState.prototype.create = function () {
 
 function startGame() {
     //game.add.tween(this.loadingBar).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
-    this.game.state.start("home");
+    this.game.state.start("home", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
+    //this.game.state.start("home");
 }
