@@ -18,7 +18,7 @@ GameState.prototype.create = function () {
 
     this.createMapLevel1();
 
-    this.createPlayer(this.xPlayer, this.yPlayer, 'playerNormal');
+    this.createPlayer('playerNormal');
 
     this.createPowerUp();
 
@@ -82,24 +82,28 @@ GameState.prototype.itemCollect = function (player, powerup) {
     powerup.kill(); // removendo o diamante do jogo
 }
 
-GameState.prototype.setStatusPlayer = function (){
+//GameState.prototype.setStatusPlayer = function (){
+function setStatusPlayer() {
+    this.xPlayer = this.player.x;
+    this.yPlayer = this.player.y;
     switch (this.scoreLife) {
         case 4:
-            this.createPlayer(this.player.x, this.player.y, 'playerSABD');
+            this.createPlayer('playerSABD');
             break;
         case 3:
-            this.createPlayer(this.player.x, this.player.y, 'playerSBD');
+            this.createPlayer('playerSBD');
             break;
         case 2:
-            this.createPlayer(this.player.x, this.player.y, 'playerSABE');
+            this.createPlayer('playerSABE');
             break;
         case 1:
-            this.createPlayer(this.player.x, this.player.y, 'playerSBE');
+            this.createPlayer('playerSBE');
             break;
         default:
             this.lose();
     }
 }
+
 GameState.prototype.enemieCollision = function (player, enemie) {
     // Tratamento da colisão entre o jogador e os diamantes
     // Se o jogador colidir por baixo e o morcego por cima, isso indica que o jogador pulou
@@ -118,8 +122,8 @@ GameState.prototype.enemieCollision = function (player, enemie) {
         this.scoreLife--;
         console.debug("Live: " + this.scoreLife);
         this.player.kill();
-        this.setStatusPlayer();
-        //game.time.events.add(1000, this.setStatusPlayer, this);
+        //this.setStatusPlayer();
+        game.time.events.add(500, setStatusPlayer, this);
     }  // caso contrário, ir para condição de derrota
 }
 
@@ -241,10 +245,10 @@ GameState.prototype.createMapLevel1 = function () {
     this.trackLayer.resizeWorld();
 }
 
-GameState.prototype.createPlayer = function (xPlayer, yPlayer, player) {
+GameState.prototype.createPlayer = function (player) {
     // cria o jogador adicionando-o na posição (160, 64) usando posição 5 do vetor
     console.debug("createPlayer: " + player);
-    this.player = this.game.add.sprite(xPlayer, yPlayer, player, 5);
+    this.player = this.game.add.sprite(this.xPlayer, this.yPlayer, player, 5);
     this.player.anchor.setTo(0.5, 0.5);
     this.game.physics.enable(this.player);
     this.player.body.gravity.y = 750;
