@@ -24,17 +24,21 @@ PreloadState.prototype.preload = function () {
 
     // Carrega um spritesheet, os sprites são de 46X64(wxh) pixels, e há 16 sprites no arquivo
     this.game.load.spritesheet('playerNormal', 'assets/spritesheets/PlayerNormal.png', 46, 64, 16);
+
     //playerSABD => player Sem Anti Braço Direito
     this.game.load.spritesheet('playerSABD', 'assets/spritesheets/playerSABD.png', 46, 64, 16);
+
     //playerSBD => player Sem Braço Direito
     this.game.load.spritesheet('playerSBD', 'assets/spritesheets/playerSBD.png', 46, 64, 16);
+
     //playerSABE => player Sem Anti Braço Esquerdo
     this.game.load.spritesheet('playerSABE', 'assets/spritesheets/playerSABE.png', 46, 64, 16);
+
     //playerSBE => player Sem Braço Esquerdo
     this.game.load.spritesheet('playerSBE', 'assets/spritesheets/playerSBE.png', 46, 64, 16);
 
     this.game.load.spritesheet('items', 'assets/spritesheets/powerup.png', 64, 64, 16);
-    this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 32, 32, 12);
+    this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 64, 64, 24);
 
     //Carrega a particula do efeito do diamante
     this.game.load.image('particle', 'assets/pixel.png');
