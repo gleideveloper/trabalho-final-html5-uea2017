@@ -1,6 +1,10 @@
 "use strict";
 
 var GameState = function (game) {
+    this.scoreLife = 5;
+    this.arrayDeathLayer = [26, 43, 44, 45, 60, 61];
+    this.xPlayer = 90;
+    this.yPlayer = 160;
 }
 
 GameState.prototype.create = function () {
@@ -14,11 +18,11 @@ GameState.prototype.create = function () {
 
     this.createMapLevel1();
 
-    this.createPlayer();
+    this.createPlayer('playerNormal');
 
     this.createPowerUp();
 
-    //this.createEnemy();
+    this.createEnemy();
 
     this.createControlKey();
 
@@ -36,8 +40,9 @@ GameState.prototype.update = function () {
 
     // Movimentação do player
     this.playerMovement();
+
     //Movimentação dos enemys
-    //this.emenyMoviment();
+    this.emenyMoviment();
 }
 
 GameState.prototype.setCollide = function () {
@@ -50,10 +55,10 @@ GameState.prototype.setCollide = function () {
 
     // O jogador morre na colisão com a lava ou com os morcegos
     this.game.physics.arcade.collide(this.player, this.deathLayer, this.deathCollision, null, this);
-    this.game.physics.arcade.overlap(this.player, this.bats, this.enemieCollision, null, this);
+    this.game.physics.arcade.overlap(this.player, this.enemies, this.enemieCollision, null, this);
 
     // Adicionando colisão entre os morcegos e as paredes
-    this.game.physics.arcade.collide(this.bats, this.trackLayer);
+    this.game.physics.arcade.collide(this.enemies, this.trackLayer);
 }
 
 GameState.prototype.itemCollect = function (player, powerup) {
@@ -66,7 +71,6 @@ GameState.prototype.itemCollect = function (player, powerup) {
         //Globals.score = this.score; // Guardando score na variável global para o próximo estado
         this.music.stop();
         this.game.state.start('win',true,false,this.score);
-
     }
     //Define o ponto de colisão
     this.particleEmitter.x = powerup.x;
@@ -78,11 +82,34 @@ GameState.prototype.itemCollect = function (player, powerup) {
     powerup.kill(); // removendo o diamante do jogo
 }
 
-GameState.prototype.enemieCollision = function (player, bat) {
+//GameState.prototype.setStatusPlayer = function (){
+function setStatusPlayer() {
+    this.xPlayer = this.player.x;
+    this.yPlayer = this.player.y;
+    switch (this.scoreLife) {
+        case 4:
+            this.createPlayer('playerSABD');
+            break;
+        case 3:
+            this.createPlayer('playerSBD');
+            break;
+        case 2:
+            this.createPlayer('playerSABE');
+            break;
+        case 1:
+            this.createPlayer('playerSBE');
+            break;
+        default:
+            this.lose();
+    }
+}
+
+GameState.prototype.enemieCollision = function (player, enemie) {
     // Tratamento da colisão entre o jogador e os diamantes
     // Se o jogador colidir por baixo e o morcego por cima, isso indica que o jogador pulou
     // em cima do morcego, nesse caso vamos "matar" o morcego
-    if (player.body.touching.down && bat.body.touching.up) {
+    console.debug("Live: " + this.scoreLife);
+    if (player.body.touching.down && enemie.body.touching.up) {
         // tocando som de morte do morcego
         this.enemyDeathSound.play();
         // adicionando um pequeno impulso vertical ao jogador
@@ -90,14 +117,20 @@ GameState.prototype.enemieCollision = function (player, bat) {
         // atualizando score
         this.score += 200;
         this.scoreText.text = "Score: " + this.score;
-        bat.kill();
-    } else this.lose(); // caso contrário, ir para condição de derrota
+        enemie.kill();
+    } else{
+        this.scoreLife--;
+        console.debug("Live: " + this.scoreLife);
+        this.player.kill();
+        //this.setStatusPlayer();
+        game.time.events.add(500, setStatusPlayer, this);
+    }  // caso contrário, ir para condição de derrota
 }
 
 // Nesse caso, apenas desligamos a colisão com a lava para evitar chamar o evento
 // repetidas vezes, e vamos para a condição de derrota
 GameState.prototype.deathCollision = function () {
-    this.level1.setCollision([43, 44, 45], false, this.deathLayer);
+    this.level1.setCollision(this.arrayDeathLayer, false, this.deathLayer);
     this.music.stop();
     this.lose();
 }
@@ -108,12 +141,15 @@ GameState.prototype.lose = function () {
     //Globals.score = this.score;
     this.playerDeathSound.play();
     this.music.stop();
+
     //desliguei a gravidade do player antes dele morer - Jean
     this.player.body.gravity.y = 0;
     //dei um delay antes da chamada da tela de "lose"
     this.game.time.events.add(500, function(){this.game.state.start("lose",true,false,this.score);}, this)
     //this.game.state.start("lose",true,false,this.score);
     //this.game.state.start('lose');
+
+    this.game.state.start("lose",true,false,this.score);
 }
 
 GameState.prototype.createPowerUp = function () {
@@ -125,7 +161,7 @@ GameState.prototype.createPowerUp = function () {
         // body.immovable = true indica que o objeto não é afetado por forças externas
         powerup.body.immovable = true;
         // Adicionando animações; o parâmetro true indica que a animação é em loop
-        powerup.animations.add('spin', [4, 1, 1, 4, 1,], 6, true);
+        powerup.animations.add('spin', [4, 1, 1, 4, 1], 6, true);
         powerup.animations.play('spin');
     });
 
@@ -136,18 +172,18 @@ GameState.prototype.createPowerUp = function () {
 
 GameState.prototype.createEnemy = function () {
     // Grupo de morcegos:
-    this.bats = this.game.add.physicsGroup();
-    this.level1.createFromObjects('Enemies', 'bat', 'enemies', 8, true, false, this.bats);
-    this.bats.forEach(function (bat) {
-        bat.anchor.setTo(0.5, 0.5);
-        bat.body.immovable = true;
-        bat.animations.add('fly', [8, 9, 10], 6, true);
-        bat.animations.play('fly');
+    this.enemies = this.game.add.physicsGroup();
+    this.level1.createFromObjects('Enemies', 'enemy', 'enemies', 8, true, false, this.enemies);
+    this.enemies.forEach(function (enemy) {
+        enemy.anchor.setTo(0.5, 0.5);
+        enemy.body.immovable = true;
+        enemy.animations.add('fly', [12, 13, 14, 15], 6, true);
+        enemy.animations.play('fly');
         // Velocidade inicial do inimigo
-        bat.body.velocity.x = 100;
+        enemy.body.velocity.x = 100;
         // bounce.x=1 indica que, se o objeto tocar num objeto no eixo x, a força deverá
         // ficar no sentido contrário; em outras palavras, o objeto é perfeitamente elástico
-        bat.body.bounce.x = 1;
+        enemy.body.bounce.x = 1;
     });
 }
 
@@ -188,7 +224,7 @@ GameState.prototype.setParallaxBackground = function () {
      * http://mightyfingers.com/tutorials/advanced/parallax-background/
      */
     //Set the games background colour
-    this.game.stage.backgroundColor = '#697e96';
+    //this.game.stage.backgroundColor = '#697e96';
     this.parallaxBg = this.game.add.tileSprite(0, 0,this.game.cache.getImage('dark-bg').width,
         this.game.cache.getImage('dark-bg').height,'dark-bg');
 }
@@ -209,8 +245,7 @@ GameState.prototype.createMapLevel1 = function () {
     this.level1.setCollisionByExclusion([9, 10, 11, 12, 17, 18, 19, 20], true, this.trackLayer);
 
     // Define quais tiles do layer de death colidem
-    this.level1.setCollision([43, 44, 45], true, this.deathLayer);
-
+    this.level1.setCollision(this.arrayDeathLayer, true, this.deathLayer);
     // Define quais tiles do layer do SuperJump colidem
     this.level1.setCollision([41, 42], true, this.superJump);
 
@@ -218,28 +253,30 @@ GameState.prototype.createMapLevel1 = function () {
     this.trackLayer.resizeWorld();
 }
 
-GameState.prototype.createPlayer = function () {
+GameState.prototype.createPlayer = function (player) {
     // cria o jogador adicionando-o na posição (160, 64) usando posição 5 do vetor
-    this.player = this.game.add.sprite(90, 160, 'player', 5);
+    console.debug("createPlayer: " + player);
+    this.player = this.game.add.sprite(this.xPlayer, this.yPlayer, player, 5);
     this.player.anchor.setTo(0.5, 0.5);
     this.game.physics.enable(this.player);
     this.player.body.gravity.y = 750;
     this.player.body.collideWorldBounds = true;
     this.game.camera.follow(this.player);
     // Animações do jogador com os parâmetros: nome da animação, lista de quadros e número de FPS
-    this.player.animations.add('walk', [0, 1, 2, 1], 6);
-    this.player.animations.add('idle', [5, 5, 5, 5, 5, 5, 6, 5, 6, 5], 6);
-    this.player.animations.add('jump', [4], 6);
+    this.player.animations.add('walk', [0, 1, 2, 3], 6);
+    //this.player.animations.add('atack', [4, 5, 6, 7], 6);
+    this.player.animations.add('idle', [14, 14, 14, 14, 15], 6);
+    this.player.animations.add('jump', [8], 6);
 }
 
 GameState.prototype.emenyMoviment = function () {
     // Para cada morcego, verificar em que sentido ele está indo
     // Se a velocidade for positiva, a escala no eixo X será 1, caso
     // contrário -1
-    this.bats.forEach(function (bat) {
-        if (bat.body.velocity.x != 0) {
+    this.enemies.forEach(function (enemy) {
+        if (enemy.body.velocity.x != 0) {
             // Math.sign apenas retorna o sinal do parâmetro: positivo retorna 1, negativo -1
-            bat.scale.x = 1 * Math.sign(bat.body.velocity.x);
+            enemy.scale.x = 1 * Math.sign(enemy.body.velocity.x);
         }
     });
 }
@@ -287,6 +324,12 @@ GameState.prototype.playerMovement = function () {
     if (!this.player.body.touching.down && !this.player.body.onFloor()) {
         this.player.animations.play('jump');
     }
+}
+
+window.onkeydown = function(event) {
+    if (event.keyCode ==  Phaser.Keyboard.ESC) {
+            game.paused = !game.paused;
+    }  
 }
 
 

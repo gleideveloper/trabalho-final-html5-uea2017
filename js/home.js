@@ -13,6 +13,7 @@ HomeState.prototype = {
         var homeImage = this.game.add.sprite(640,220,"home");
         homeImage.anchor.setTo(0.5,0.5);
 
+
         var titleHome = this.game.add.text(640, 420, "Click Play", {font: "40px Arial", fill: "#ffffff"});
         titleHome.anchor.setTo(0.5,0.5);
 
@@ -20,6 +21,7 @@ HomeState.prototype = {
         playButton.anchor.setTo(0.5,0.5);
     },
     playTheGame: function(){
-        this.game.state.start("level1");
+        //this.game.state.start("level1");
+        this.game.state.start("level1", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
     }
 }
