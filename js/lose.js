@@ -21,6 +21,10 @@ LoseState.prototype.create = function() {
     //this.game.add.text(200, 300, "Score: " + Globals.score, {font: "35px Arial", fill: "#ffffff"});
     // Capturando tecla enter para uso posterior
     this.returnKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    
+    //mostra BG lose
+    var loseBGImage = this.game.add.sprite(1280,640,"BGLose");
+        loseBGImage.anchor.setTo(1,1);
 }
 
 // update: o que fazer a cada quadro por segundo

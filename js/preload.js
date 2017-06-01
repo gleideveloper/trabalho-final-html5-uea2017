@@ -22,7 +22,12 @@ PreloadState.prototype.preload = function () {
     this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
 
     this.game.load.image('dark-bg', 'assets/Bb_Level1.png');
-
+    
+    //BG lose, win, pause
+    this.game.load.image("BGLose","assets/Gameover.png");
+    this.game.load.image("BGWin","assets/Vitoria.png");
+    this.game.load.image("BGPause","assets/Pause.png");
+    
     // Carrega um spritesheet, os sprites são de 46X64(wxh) pixels, e há 16 sprites no arquivo
     this.game.load.spritesheet('playerNormal', 'assets/spritesheets/PlayerNormal.png', 46, 64, 16);
 
