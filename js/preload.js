@@ -38,7 +38,7 @@ PreloadState.prototype.preload = function () {
     //playerSBE => player Sem Braço Esquerdo
     this.game.load.spritesheet('playerSBE', 'assets/spritesheets/playerSBE.png', 46, 64, 16);
 
-    this.game.load.spritesheet('items', 'assets/spritesheets/powerup.png', 64, 64, 16);
+    this.game.load.spritesheet('items', 'assets/spritesheets/powerUp.png', 46, 64, 16);
     this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 64, 64, 24);
 
     //Carrega a particula do efeito do diamante

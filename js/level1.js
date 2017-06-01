@@ -159,7 +159,7 @@ GameState.prototype.createPowerUp = function () {
         // body.immovable = true indica que o objeto não é afetado por forças externas
         powerup.body.immovable = true;
         // Adicionando animações; o parâmetro true indica que a animação é em loop
-        powerup.animations.add('spin', [4, 1, 1, 4, 1], 6, true);
+        powerup.animations.add('spin', [1, 2, 2, 1, 1], 6, true);
         powerup.animations.play('spin');
     });
 
