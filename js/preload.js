@@ -38,7 +38,7 @@ PreloadState.prototype.preload = function () {
     this.game.load.spritesheet('playerSBE', 'assets/spritesheets/playerSBE.png', 46, 64, 16);
 
     this.game.load.spritesheet('items', 'assets/spritesheets/powerUp.png', 46, 64, 16);
-    this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 64, 64, 24);
+    this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 46, 64, 20);
 
     //carrega tambacuri bullet
     this.game.load.image('tambacuri', 'assets/spritesheets/tambacuri.png');

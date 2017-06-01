@@ -175,17 +175,18 @@ GameState.prototype.createPowerUp = function () {
 GameState.prototype.createEnemy = function () {
     // Grupo de morcegos:
     this.enemies = this.game.add.physicsGroup();
-    this.level1.createFromObjects('Enemies', 'enemy', 'enemies', 20, true, false, this.enemies);
-    this.enemies.forEach(function (enemy) {
-        enemy.anchor.setTo(0.5, 0.5);
-        enemy.body.immovable = true;
-        enemy.animations.add('fly', [15, 15, 16, 16], 6, true);
-        enemy.animations.play('fly');
+    this.cornos = this.game.add.physicsGroup();
+    this.level1.createFromObjects('Enemies', 'enemy', 'enemies', 8, true, false, this.enemies);
+    this.enemies.forEach(function (bat) {
+        bat.anchor.setTo(0.5, 0.5);
+        bat.body.immovable = true;
+        bat.animations.add('fly', [15, 16, 15], 6, true);
+        bat.animations.play('fly');
         // Velocidade inicial do inimigo
-        enemy.body.velocity.x = 100;
+        bat.body.velocity.x = 100;
         // bounce.x=1 indica que, se o objeto tocar num objeto no eixo x, a força deverá
         // ficar no sentido contrário; em outras palavras, o objeto é perfeitamente elástico
-        enemy.body.bounce.x = 1;
+        bat.body.bounce.x = 1;
     });
 }
 
