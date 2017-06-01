@@ -10,17 +10,21 @@ WinState.prototype.preload = function() {
 }
 
 WinState.prototype.init = function(score){
-    this.game.add.text(200, 300, "Score: " + score, {font: "35px Arial", fill: "#ffffff"});
+    this.game.add.text(75, 200, "Score: " + score, {font: "35px Arial", fill: "#ffffff"});
     //alert("You scored: "+score)
 }
 
 // create: instanciar e inicializar todos os objetos dessa scene
 WinState.prototype.create = function() {
-    this.game.add.text(200, 200, "You Win!", {font: "35px Arial", fill: "#ffffff"});
+    this.game.add.text(75, 100, "You Win!", {font: "35px Arial", fill: "#ffffff"});
     //Adiciona o Score
     //this.game.add.text(200, 300, "Score: " + Globals.score, {font: "35px Arial", fill: "#ffffff"});
     // Capturando tecla enter para uso posterior
     this.returnKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    
+    //mostra BG win
+    var winBGImage = this.game.add.sprite(1280,640,"BGWin");
+        winBGImage.anchor.setTo(1,1);
 }
 
 // update: o que fazer a cada quadro por segundo
