@@ -47,6 +47,7 @@ GameState.prototype.update = function () {
 
     //Movimentação dos enemys
     this.emenyMoviment();
+    
 }
 
 GameState.prototype.setCollide = function () {
@@ -354,6 +355,9 @@ GameState.prototype.createBulletTambacuri = function () {
 window.onkeydown = function(event) {
     if (event.keyCode ==  Phaser.Keyboard.ESC) {
             game.paused = !game.paused;
+        //mostra BG pause
+        //var pauseBGImage = this.game.add.sprite(1280,640,"BGPause");
+        //pauseBGImage.anchor.setTo(1,1);
     }  
 }
 
