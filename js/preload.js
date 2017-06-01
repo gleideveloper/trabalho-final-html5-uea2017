@@ -48,7 +48,7 @@ PreloadState.prototype.preload = function () {
 
     //Button Controls
     this.game.load.image("home","assets/home.png");
-    this.game.load.image("play","assets/play-button.png");
+    this.game.load.image("play","assets/btn_play.png");
     this.game.load.image("pause","assets/pause-button.png");
 
     // Carregas os sons
