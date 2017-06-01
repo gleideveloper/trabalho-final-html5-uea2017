@@ -319,7 +319,7 @@ GameState.prototype.playerMovement = function () {
 }
 
 window.onkeydown = function(event) {
-    if (event.keyCode ==  Phaser.Keyboard.P) {
+    if (event.keyCode ==  Phaser.Keyboard.ESC) {
             game.paused = !game.paused;
     }  
 }
