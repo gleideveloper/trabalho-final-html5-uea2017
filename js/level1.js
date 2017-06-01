@@ -143,11 +143,11 @@ GameState.prototype.lose = function () {
     this.music.stop();
 
     //desliguei a gravidade do player antes dele morer - Jean
-    //this.player.body.gravity.y = 0;
     //dei um delay antes da chamada da tela de "lose"
-    //this.game.time.events.add(500, function(){this.game.state.start("lose",true,false,this.score);}, this);
-    this.game.state.start("lose",true,false,this.score);
-    //this.game.state.start('lose');
+    this.game.time.events.add(500, function () {
+        this.game.state.start("lose", true, false, this.score);
+    }, this);
+    //this.game.state.start("lose",true,false,this.score);
 }
 
 GameState.prototype.createPowerUp = function () {
