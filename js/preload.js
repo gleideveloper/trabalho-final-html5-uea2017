@@ -16,18 +16,16 @@ PreloadState.prototype.preload = function () {
 
     //Carrega o arquivo Tiled no formato JSON
    this.game.load.tilemap('level1', 'assets/maps/tiled_level_palafitas.json', null, Phaser.Tilemap.TILED_JSON);
-    //this.game.load.tilemap('levelpalafitas', 'assets/maps/tiled_level_palafitas.json', null, Phaser.Tilemap.TILED_JSON);
 
     //Carrega o tiles do spritesheets
     this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
-
-    this.game.load.image('dark-bg', 'assets/Bb_Level1.png');
     
     //BG lose, win, pause
     this.game.load.image("BGLose","assets/Gameover.png");
     this.game.load.image("BGWin","assets/Vitoria.png");
     this.game.load.image("BGPause","assets/Pause.png");
-    
+    this.game.load.image('dark-bg', 'assets/Bg_Level1.png');
+
     // Carrega um spritesheet, os sprites são de 46X64(wxh) pixels, e há 16 sprites no arquivo
     this.game.load.spritesheet('playerNormal', 'assets/spritesheets/PlayerNormal.png', 46, 64, 16);
 
@@ -43,8 +41,11 @@ PreloadState.prototype.preload = function () {
     //playerSBE => player Sem Braço Esquerdo
     this.game.load.spritesheet('playerSBE', 'assets/spritesheets/playerSBE.png', 46, 64, 16);
 
-    this.game.load.spritesheet('items', 'assets/spritesheets/powerup.png', 64, 64, 16);
-    this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 64, 64, 24);
+    this.game.load.spritesheet('items', 'assets/spritesheets/powerUp.png', 46, 64, 16);
+    this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 46, 64, 20);
+
+    //carrega tambacuri bullet
+    this.game.load.image('tambacuri', 'assets/spritesheets/tambacuri.png');
 
     //Carrega a particula do efeito do diamante
     this.game.load.image('particle', 'assets/pixel.png');
@@ -68,7 +69,5 @@ PreloadState.prototype.create = function () {
 }
 
 function startGame() {
-    //game.add.tween(this.loadingBar).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
-    this.game.state.start("home", Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.In.SlideRight);
-    //this.game.state.start("home");
+    this.game.state.start("home");
 }
