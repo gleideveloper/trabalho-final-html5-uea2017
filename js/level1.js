@@ -51,19 +51,23 @@ GameState.prototype.update = function () {
 }
 
 GameState.prototype.setCollide = function () {
+    // Colisão com super Jump - executa a função superJump
+    this.game.physics.arcade.collide(this.player, this.superJump, this.superJumpFunction, null, this);
     // Detecção de colisões do player com as paredes da fase, que é um layer
     this.game.physics.arcade.collide(this.player, this.trackLayer);
 
     // Cada colisão entre dois objetos terá um callback, que é o terceiro parâmetro
     // Colisão com os diamantes - devem ser coletados
     this.game.physics.arcade.overlap(this.player, this.powerups, this.itemCollect, null, this);
-
     // O jogador morre na colisão com a lava ou com os morcegos
     this.game.physics.arcade.collide(this.player, this.deathLayer, this.deathCollision, null, this);
     this.game.physics.arcade.overlap(this.player, this.enemies, this.enemieCollision, null, this);
 
+    this.game.physics.arcade.overlap(weapon, this.enemies, this.tambacuriCollision, null, this);
     // Adicionando colisão entre os morcegos e as paredes
     this.game.physics.arcade.collide(this.enemies, this.trackLayer);
+
+
 }
 
 GameState.prototype.itemCollect = function (player, powerup) {
@@ -244,8 +248,8 @@ GameState.prototype.createMapLevel1 = function () {
     this.BgPalafitas = this.level1.createLayer('BgPalafitas');
     this.BgWalls = this.level1.createLayer('BgWalls');
     this.deathLayer = this.level1.createLayer('Death');
-    this.superJump = this.level1.createLayer('SuperJump');
     this.trackLayer = this.level1.createLayer('Track');
+    this.superJump = this.level1.createLayer('SuperJump');
 
     //Define quais tiles do layer walls NÃO terão colisões
     this.level1.setCollisionByExclusion([9, 10, 11, 12, 17, 18, 19, 20], true, this.trackLayer);
@@ -253,7 +257,7 @@ GameState.prototype.createMapLevel1 = function () {
     // Define quais tiles do layer de death colidem
     this.level1.setCollision(this.arrayDeathLayer, true, this.deathLayer);
     // Define quais tiles do layer do SuperJump colidem
-    this.level1.setCollision([41, 42], true, this.superJump);
+    this.level1.setCollision([41,42], true, this.superJump);
 
     // Redimensionando o tamanho do "mundo" do jogo
     this.trackLayer.resizeWorld();
@@ -350,6 +354,24 @@ GameState.prototype.createBulletTambacuri = function () {
     weapon.bulletSpeed = 600;
 
     weapon.trackSprite(this.player,0,0,true);
+}
+
+GameState.prototype.superJumpFunction = function () {
+    console.debug("superJump function");
+    //if(this.player.body.touching.down && this.player.body.onFloor()){
+        // Adicione uma velocidade no eixo Y, fazendo o jogador pular
+        this.player.body.velocity.y = -1500;
+        // Tocando o som de pulo
+        this.jumpSound.play();
+    //}
+}
+
+GameState.prototype.tambacuriCollision = function (enemie) {
+    this.enemyDeathSound.play();
+    // atualizando score
+    this.score += 100;
+    this.scoreText.text = "Score: " + this.score;
+    enemie.kill();
 }
 
 window.onkeydown = function(event) {
