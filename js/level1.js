@@ -175,11 +175,11 @@ GameState.prototype.createPowerUp = function () {
 GameState.prototype.createEnemy = function () {
     // Grupo de morcegos:
     this.enemies = this.game.add.physicsGroup();
-    this.level1.createFromObjects('Enemies', 'enemy', 'enemies', 8, true, false, this.enemies);
+    this.level1.createFromObjects('Enemies', 'enemy', 'enemies', 20, true, false, this.enemies);
     this.enemies.forEach(function (enemy) {
         enemy.anchor.setTo(0.5, 0.5);
         enemy.body.immovable = true;
-        enemy.animations.add('fly', [12, 13, 14, 15], 6, true);
+        enemy.animations.add('fly', [15, 15, 16, 16], 6, true);
         enemy.animations.play('fly');
         // Velocidade inicial do inimigo
         enemy.body.velocity.x = 100;
