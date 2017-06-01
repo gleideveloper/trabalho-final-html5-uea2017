@@ -145,7 +145,7 @@ GameState.prototype.lose = function () {
     //desliguei a gravidade do player antes dele morer - Jean
     this.player.body.gravity.y = 0;
     //dei um delay antes da chamada da tela de "lose"
-    this.game.time.events.add(500, function(){this.game.state.start("lose",true,false,this.score);}, this)
+    this.game.time.events.add(500, function(){this.game.state.start("lose",true,false,this.score);}, this);
     //this.game.state.start("lose",true,false,this.score);
     //this.game.state.start('lose');
 
@@ -236,7 +236,7 @@ GameState.prototype.createMapLevel1 = function () {
 
     //Cria os layers
 
-    this.level1.createLayer('Bg')
+    this.level1.createLayer('Bg');
     this.deathLayer = this.level1.createLayer('Death');
     this.superJump = this.level1.createLayer('SuperJump');
     this.trackLayer = this.level1.createLayer('Track');
