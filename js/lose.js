@@ -10,6 +10,7 @@ LoseState.prototype.preload = function() {
 }
 
 LoseState.prototype.init = function(score){
+    console.debug("SCORE: " + score);
     this.game.add.text(200, 300, "Score: " + score, {font: "35px Arial", fill: "#ffffff"});
     //alert("You scored: "+score)
 }
