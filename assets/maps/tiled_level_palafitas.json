@@ -50,7 +50,7 @@
          "name":"PowerUp",
          "objects":[
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":53,
                  "name":"power",
@@ -62,7 +62,7 @@
                  "y":1152
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":54,
                  "name":"power",
@@ -74,7 +74,7 @@
                  "y":1090
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":55,
                  "name":"power",
@@ -86,7 +86,7 @@
                  "y":448
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":56,
                  "name":"power",
@@ -98,7 +98,7 @@
                  "y":494
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":57,
                  "name":"power",
@@ -110,7 +110,7 @@
                  "y":644
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":58,
                  "name":"power",
@@ -122,7 +122,7 @@
                  "y":634
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":59,
                  "name":"power",
@@ -134,7 +134,7 @@
                  "y":700
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":60,
                  "name":"power",
@@ -146,7 +146,7 @@
                  "y":434
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":61,
                  "name":"power",
@@ -158,7 +158,7 @@
                  "y":376
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":62,
                  "name":"power",
@@ -170,7 +170,7 @@
                  "y":504
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":63,
                  "name":"power",
@@ -182,7 +182,7 @@
                  "y":498
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":64,
                  "name":"power",
@@ -194,7 +194,7 @@
                  "y":292
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":65,
                  "name":"power",
@@ -206,7 +206,7 @@
                  "y":148
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":66,
                  "name":"power",
@@ -218,7 +218,7 @@
                  "y":190
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":67,
                  "name":"power",
@@ -230,7 +230,7 @@
                  "y":188
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":68,
                  "name":"power",
@@ -242,7 +242,7 @@
                  "y":238
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":69,
                  "name":"power",
@@ -254,7 +254,7 @@
                  "y":192
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":70,
                  "name":"power",
@@ -266,7 +266,7 @@
                  "y":188
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":71,
                  "name":"power",
@@ -278,7 +278,7 @@
                  "y":194
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":72,
                  "name":"power",
@@ -290,7 +290,7 @@
                  "y":136
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":73,
                  "name":"power",
@@ -302,7 +302,7 @@
                  "y":182
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":74,
                  "name":"power",
@@ -314,7 +314,7 @@
                  "y":760
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":75,
                  "name":"power",
@@ -326,7 +326,7 @@
                  "y":694
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":76,
                  "name":"power",
@@ -338,7 +338,7 @@
                  "y":830
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":77,
                  "name":"power",
@@ -350,7 +350,7 @@
                  "y":1018
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":78,
                  "name":"power",
@@ -362,7 +362,7 @@
                  "y":1028
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":79,
                  "name":"power",
@@ -374,7 +374,7 @@
                  "y":1164
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":80,
                  "name":"power",
@@ -386,7 +386,7 @@
                  "y":1136
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":81,
                  "name":"power",
@@ -398,7 +398,7 @@
                  "y":638
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":82,
                  "name":"power",
@@ -410,7 +410,7 @@
                  "y":554
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":83,
                  "name":"power",
@@ -422,7 +422,7 @@
                  "y":520
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":84,
                  "name":"power",
@@ -434,7 +434,7 @@
                  "y":584
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":85,
                  "name":"power",
@@ -446,7 +446,7 @@
                  "y":638
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":86,
                  "name":"power",
@@ -458,7 +458,7 @@
                  "y":638
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":87,
                  "name":"power",
@@ -470,7 +470,7 @@
                  "y":582
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":88,
                  "name":"power",
@@ -482,7 +482,7 @@
                  "y":522
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":89,
                  "name":"power",
@@ -494,7 +494,7 @@
                  "y":324
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":90,
                  "name":"power",
@@ -506,7 +506,7 @@
                  "y":388
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":91,
                  "name":"power",
@@ -518,7 +518,7 @@
                  "y":182
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":92,
                  "name":"power",
@@ -530,7 +530,7 @@
                  "y":172
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":93,
                  "name":"power",
@@ -542,7 +542,7 @@
                  "y":172
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":94,
                  "name":"power",
@@ -554,7 +554,7 @@
                  "y":574
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":95,
                  "name":"power",
@@ -566,7 +566,7 @@
                  "y":692
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":96,
                  "name":"power",
@@ -578,7 +578,7 @@
                  "y":638
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":97,
                  "name":"power",
@@ -590,7 +590,7 @@
                  "y":332
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":98,
                  "name":"power",
@@ -602,7 +602,7 @@
                  "y":712
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":99,
                  "name":"power",
@@ -614,7 +614,7 @@
                  "y":1138
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":100,
                  "name":"power",
@@ -626,7 +626,7 @@
                  "y":1152
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":101,
                  "name":"power",
@@ -638,7 +638,7 @@
                  "y":1148
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":102,
                  "name":"power",
@@ -650,7 +650,7 @@
                  "y":1138
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":103,
                  "name":"power",
@@ -662,7 +662,7 @@
                  "y":1154
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":104,
                  "name":"power",
@@ -674,7 +674,7 @@
                  "y":826
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":105,
                  "name":"power",
@@ -686,7 +686,7 @@
                  "y":830
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":106,
                  "name":"power",
@@ -698,7 +698,7 @@
                  "y":570
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":107,
                  "name":"power",
@@ -710,7 +710,7 @@
                  "y":494
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":108,
                  "name":"power",
@@ -722,7 +722,7 @@
                  "y":442
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":109,
                  "name":"power",
@@ -734,7 +734,7 @@
                  "y":444
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":110,
                  "name":"power",
@@ -746,7 +746,7 @@
                  "y":430
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":111,
                  "name":"power",
@@ -758,7 +758,7 @@
                  "y":190
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":112,
                  "name":"power",
@@ -770,7 +770,7 @@
                  "y":130
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":113,
                  "name":"power",
@@ -782,7 +782,7 @@
                  "y":130
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":114,
                  "name":"power",
@@ -794,7 +794,7 @@
                  "y":194
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":115,
                  "name":"power",
@@ -806,7 +806,7 @@
                  "y":186
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":116,
                  "name":"power",
@@ -818,7 +818,7 @@
                  "y":130
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":117,
                  "name":"power",
@@ -830,7 +830,7 @@
                  "y":1082
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":118,
                  "name":"power",
@@ -842,7 +842,7 @@
                  "y":1086
                 }, 
                 {
-                 "gid":170,
+                 "gid":166,
                  "height":64,
                  "id":119,
                  "name":"power",
@@ -886,13 +886,13 @@
          "margin":0,
          "name":"tiles64px",
          "spacing":0,
-         "tilecount":145,
+         "tilecount":144,
          "tileheight":64,
          "tilewidth":64
         }, 
         {
          "columns":5,
-         "firstgid":149,
+         "firstgid":145,
          "image":"..\/spritesheets\/enemies.png",
          "imageheight":257,
          "imagewidth":231,
@@ -904,13 +904,26 @@
          "tilewidth":46
         }, 
         {
-         "columns":3,
-         "firstgid":169,
+         "columns":5,
+         "firstgid":165,
          "image":"..\/spritesheets\/powerUp.png",
+         "imageheight":256,
+         "imagewidth":256,
+         "margin":0,
+         "name":"powerUp",
+         "spacing":0,
+         "tilecount":20,
+         "tileheight":64,
+         "tilewidth":46
+        }, 
+        {
+         "columns":3,
+         "firstgid":185,
+         "image":"..\/spritesheets\/powerup.png",
          "imageheight":65,
          "imagewidth":138,
          "margin":0,
-         "name":"powerUp",
+         "name":"powerup",
          "spacing":0,
          "tilecount":3,
          "tileheight":64,

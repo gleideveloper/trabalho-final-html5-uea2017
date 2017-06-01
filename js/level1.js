@@ -216,7 +216,7 @@ GameState.prototype.setParallaxBackground = function () {
      * http://mightyfingers.com/tutorials/advanced/parallax-background/
      */
     //Set the games background colour
-    this.game.stage.backgroundColor = '#697e96';
+    //this.game.stage.backgroundColor = '#697e96';
     this.parallaxBg = this.game.add.tileSprite(0, 0,this.game.cache.getImage('dark-bg').width,
         this.game.cache.getImage('dark-bg').height,'dark-bg');
 }
