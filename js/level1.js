@@ -318,4 +318,10 @@ GameState.prototype.playerMovement = function () {
     }
 }
 
+window.onkeydown = function(event) {
+    if (event.keyCode ==  Phaser.Keyboard.P) {
+            game.paused = !game.paused;
+    }  
+}
+
 
