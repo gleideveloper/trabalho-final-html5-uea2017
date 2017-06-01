@@ -10,7 +10,7 @@ game.state.add('boot', BootState);
 game.state.add('preload', PreloadState);
 game.state.add('home', HomeState);
 game.state.add('level1', GameState);
-game.state.add('levelpalafitas', GameStatePalafitas);
+//game.state.add('levelpalafitas', GameStatePalafitas);
 game.state.add('win', WinState);
 game.state.add('lose', LoseState);
 game.state.start('boot');
