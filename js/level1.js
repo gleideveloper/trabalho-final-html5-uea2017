@@ -239,7 +239,8 @@ GameState.prototype.createMapLevel1 = function () {
 
     //Cria os layers
 
-    this.level1.createLayer('Bg');
+    this.BgPalafitas = this.level1.createLayer('BgPalafitas');
+    this.BgWalls = this.level1.createLayer('BgWalls');
     this.deathLayer = this.level1.createLayer('Death');
     this.superJump = this.level1.createLayer('SuperJump');
     this.trackLayer = this.level1.createLayer('Track');
