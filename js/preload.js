@@ -50,11 +50,11 @@ PreloadState.prototype.preload = function () {
     this.game.load.image("pause","assets/pause-button.png");
 
     // Carregas os sons
-    this.game.load.audio('jumpSound', 'assets/sounds/jump.wav');
-    this.game.load.audio('pickupSound', 'assets/sounds/pickup.wav');
-    this.game.load.audio('playerDeathSound', 'assets/sounds/hurt3.ogg');
-    this.game.load.audio('enemyDeathSound', 'assets/sounds/hit2.ogg');
-    this.game.load.audio('music', 'assets/sounds/mystery.wav');
+    this.game.load.audio('jumpSound', 'assets/sounds/ourSounds/jump.wav');
+    this.game.load.audio('pickupSound', 'assets/sounds/ourSounds/powerUp.wav');
+    this.game.load.audio('playerDeathSound', 'assets/sounds/ourSounds/death.wav');
+    this.game.load.audio('enemyDeathSound', 'assets/sounds/ourSounds/hit.ogg');
+    this.game.load.audio('music', 'assets/sounds/ourSounds/BG.wav');
 }
 
 PreloadState.prototype.create = function () {
