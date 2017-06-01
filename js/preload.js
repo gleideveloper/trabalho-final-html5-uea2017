@@ -41,6 +41,9 @@ PreloadState.prototype.preload = function () {
     this.game.load.spritesheet('items', 'assets/spritesheets/powerUp.png', 46, 64, 16);
     this.game.load.spritesheet('enemies', 'assets/spritesheets/enemies.png', 64, 64, 24);
 
+    //carrega tambacuri bullet
+    this.game.load.image('tambacuri', 'assets/spritesheets/tambacuri.png');
+
     //Carrega a particula do efeito do diamante
     this.game.load.image('particle', 'assets/pixel.png');
 

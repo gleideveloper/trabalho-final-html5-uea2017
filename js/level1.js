@@ -7,6 +7,8 @@ var GameState = function (game) {
     this.yPlayer = 160;
 }
 
+var weapon;
+
 GameState.prototype.create = function () {
     // Inicializando sistema de física
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -29,6 +31,8 @@ GameState.prototype.create = function () {
     this.createSound();
 
     this.createScore();
+
+    this.createBulletTambacuri();
 }
 
 GameState.prototype.update = function () {
@@ -215,6 +219,7 @@ GameState.prototype.createSound = function () {
 GameState.prototype.createControlKey = function () {
     this.keys = this.game.input.keyboard.createCursorKeys();
     this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.shotButton = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
 }
 
 GameState.prototype.setParallaxBackground = function () {
@@ -262,7 +267,7 @@ GameState.prototype.createPlayer = function (player) {
     this.game.camera.follow(this.player);
     // Animações do jogador com os parâmetros: nome da animação, lista de quadros e número de FPS
     this.player.animations.add('walk', [0, 1, 2, 3], 6);
-    //this.player.animations.add('atack', [4, 5, 6, 7], 6);
+    this.player.animations.add('attack', [6, 7], 6);
     this.player.animations.add('idle', [14, 14, 14, 14, 15], 6);
     this.player.animations.add('jump', [8], 6);
 }
@@ -286,8 +291,10 @@ GameState.prototype.playerMovement = function () {
     if (this.keys.left.isDown) {
         this.player.body.velocity.x = -150; // Ajustar velocidade
         // Se o jogador estiver virado para a direita, inverter a escala para que ele vire para o outro lado
-        if (this.player.scale.x == 1)
+        if (this.player.scale.x == 1){
             this.player.scale.x = -1;
+            weapon.bulletSpeed=-600;
+        }
         // Iniciando a animação 'walk'
         this.player.animations.play('walk');
     }
@@ -297,8 +304,10 @@ GameState.prototype.playerMovement = function () {
         // se a tecla direita estiver pressionada
         this.player.body.velocity.x = 150;  // Ajustar velocidade
         // Se o jogador estiver virado para a direita, inverter a escala para que ele vire para o outro lado
-        if (this.player.scale.x == -1)
+        if (this.player.scale.x == -1){
             this.player.scale.x = 1;
+            weapon.bulletSpeed=600;
+        }
         // Iniciando a animação 'walk'
         this.player.animations.play('walk');
     }
@@ -322,6 +331,22 @@ GameState.prototype.playerMovement = function () {
     if (!this.player.body.touching.down && !this.player.body.onFloor()) {
         this.player.animations.play('jump');
     }
+
+    // Se o jogador apertar o 'X', inicia a animação do tiro
+    if (this.shotButton.isDown) {
+        this.player.animations.play('attack');
+        weapon.fireAtSprite(this.player);
+    }
+}
+
+GameState.prototype.createBulletTambacuri = function () {
+    weapon = this.game.add.weapon(1, 'tambacuri');
+    //  The bullet will be automatically killed when it leaves the camera bounds
+    weapon.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
+    //  The speed at which the bullet is fired
+    weapon.bulletSpeed = 600;
+
+    weapon.trackSprite(this.player,0,0,true);
 }
 
 window.onkeydown = function(event) {
