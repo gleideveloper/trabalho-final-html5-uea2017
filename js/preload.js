@@ -69,5 +69,5 @@ PreloadState.prototype.create = function () {
 }
 
 function startGame() {
-    this.game.state.start("win");
+    this.game.state.start("home");
 }
