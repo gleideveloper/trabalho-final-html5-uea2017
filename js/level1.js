@@ -360,7 +360,7 @@ GameState.prototype.superJumpFunction = function () {
     console.debug("superJump function");
     //if(this.player.body.touching.down && this.player.body.onFloor()){
         // Adicione uma velocidade no eixo Y, fazendo o jogador pular
-        this.player.body.velocity.y = -1500;
+        this.player.body.velocity.y = -700;
         // Tocando o som de pulo
         this.jumpSound.play();
     //}
