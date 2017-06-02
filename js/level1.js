@@ -257,7 +257,7 @@ GameState.prototype.createMapLevel1 = function () {
     // Define quais tiles do layer de death colidem
     this.level1.setCollision(this.arrayDeathLayer, true, this.deathLayer);
     // Define quais tiles do layer do SuperJump colidem
-    this.level1.setCollision([41,42], true, this.superJump);
+    this.level1.setCollision([42,43], true, this.superJump);
 
     // Redimensionando o tamanho do "mundo" do jogo
     this.trackLayer.resizeWorld();
