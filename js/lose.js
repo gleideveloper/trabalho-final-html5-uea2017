@@ -11,13 +11,15 @@ LoseState.prototype.preload = function() {
 
 LoseState.prototype.init = function(score){
     console.debug("SCORE: " + score);
-    this.game.add.text(200, 300, "Score: " + score, {font: "35px Arial", fill: "#ffffff"});
+    var titleScore = this.game.add.text(600, 50, "Score: " + score, {font: "35px Arial", fill: "#ffffff"});
+    titleScore.anchor.setTo(0.5,0.5);
     //alert("You scored: "+score)
 }
 
 // create: instanciar e inicializar todos os objetos dessa scene
 LoseState.prototype.create = function() {
-    this.game.add.text(200, 200, "You Lose!", {font: "35px Arial", fill: "#ffffff"});
+    var titleRestart = this.game.add.text(600, 600, "Click Enter to Restart", {font: "45px Arial", fill: "#ffffff"});
+    titleRestart.anchor.setTo(0.5,0.5);
     //Adiciona o Score
     //this.game.add.text(200, 300, "Score: " + Globals.score, {font: "35px Arial", fill: "#ffffff"});
     // Capturando tecla enter para uso posterior
