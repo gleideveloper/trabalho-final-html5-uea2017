@@ -5,7 +5,7 @@ var BootState = function(game) {
 };
 
 BootState.prototype.preload = function() {
-    this.game.load.image("loading","assets/loading.png");
+    this.game.load.image("loading","assets/Carregando.png");
 }
 
 // create: instanciar e inicializar todos os objetos dessa scene

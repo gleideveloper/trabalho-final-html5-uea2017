@@ -8,7 +8,7 @@ PreloadState.prototype.preload = function () {
     this.game.stage.backgroundColor = '#697e96';
 
     //Carrega a barra de status
-    this.loadingText = this.game.add.text(640, 300, "Loading...!", {font: "20px Arial", fill: "#ffffff"});
+    this.loadingText = this.game.add.text(1080, 550, "Wait a second!", {font: "35px Arial", fill: "#000000"});
     this.loadingText.anchor.setTo(0.5,0.5);
     this.loadingBar = this.add.sprite(640, 320, "loading");
     this.loadingBar.anchor.setTo(0.5, 0.5);
