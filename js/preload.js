@@ -15,7 +15,7 @@ PreloadState.prototype.preload = function () {
     this.load.setPreloadSprite(this.loadingBar);
 
     //Carrega o arquivo Tiled no formato JSON
-   this.game.load.tilemap('level1', 'assets/maps/tiled_level_palafitas.json', null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('level1', 'assets/maps/tiled_level_palafitas.json', null, Phaser.Tilemap.TILED_JSON);
 
     //Carrega o tiles do spritesheets
     this.game.load.image('mapTiles', 'assets/spritesheets/tiles64px.png');
@@ -25,6 +25,10 @@ PreloadState.prototype.preload = function () {
     this.game.load.image("BGWin","assets/Vitoria.png");
     this.game.load.image("BGPause","assets/Pause.png");
     this.game.load.image('dark-bg', 'assets/Bg_Level1.png');
+
+    //Button Controls
+    this.game.load.image("home","assets/home.png");
+    this.game.load.image("play","assets/btn_play.png");
 
     // Carrega um spritesheet, os sprites são de 46X64(wxh) pixels, e há 16 sprites no arquivo
     this.game.load.spritesheet('playerNormal', 'assets/spritesheets/PlayerNormal.png', 46, 64, 16);
@@ -50,16 +54,11 @@ PreloadState.prototype.preload = function () {
     //Carrega a particula do efeito do diamante
     this.game.load.image('particle', 'assets/pixel.png');
 
-    //Button Controls
-    this.game.load.image("home","assets/home.png");
-    this.game.load.image("play","assets/btn_play.png");
-    this.game.load.image("pause","assets/pause-button.png");
-
     // Carregas os sons
     this.game.load.audio('jumpSound', 'assets/sounds/ourSounds/jump.wav');
     this.game.load.audio('pickupSound', 'assets/sounds/ourSounds/powerUp.wav');
     this.game.load.audio('playerDeathSound', 'assets/sounds/ourSounds/death.wav');
-    this.game.load.audio('enemyDeathSound', 'assets/sounds/ourSounds/hit.ogg');
+    this.game.load.audio('enemyDeathSound', 'assets/sounds/ourSounds/hit.wav');
     this.game.load.audio('music', 'assets/sounds/ourSounds/BG.wav');
 }
 
