@@ -63,7 +63,7 @@ GameState.prototype.setCollide = function () {
     this.game.physics.arcade.collide(this.player, this.deathLayer, this.deathCollision, null, this);
     this.game.physics.arcade.overlap(this.player, this.enemies, this.enemieCollision, null, this);
 
-    this.game.physics.arcade.overlap(weapon, this.enemies, this.tambacuriCollision, null, this);
+    this.game.physics.arcade.overlap(weapon.bullets, this.enemies, this.tambacuriCollision, null, this);
     // Adicionando colisão entre os morcegos e as paredes
     this.game.physics.arcade.collide(this.enemies, this.trackLayer);
 
@@ -365,13 +365,15 @@ GameState.prototype.superJumpFunction = function () {
         this.jumpSound.play();
     //}
 }
-
-GameState.prototype.tambacuriCollision = function (enemie) {
+// colisão do bala tambacuri que mata o inimigo
+GameState.prototype.tambacuriCollision = function (weapon,enemie) {
     this.enemyDeathSound.play();
     // atualizando score
     this.score += 100;
     this.scoreText.text = "Score: " + this.score;
+    // this.enemies.kill();
     enemie.kill();
+    weapon.kill();
 }
 
 window.onkeydown = function(event) {
